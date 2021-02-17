@@ -69,8 +69,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 html {
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: 0;
 }
 
 /* Sections
@@ -432,7 +432,6 @@ i {
 }
 
 
-
 pre {
 	background: #eee;
 	font-family: "Courier 10 Pitch", courier, monospace;
@@ -637,31 +636,32 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
-#masthead{
+#masthead {
 	position: absolute;
 	z-index: 9999;
 	display: flex;
 	justify-content: space-between;
 	background-color: rgba(0, 0, 0, 0.8);
 	width: 100%;
-	top:0;
-	right:0;
-	left:0;
+	top: 0;
+	right: 0;
+	left: 0;
 
 }
 
-.site-main{
-	background-color: pink;
-	padding:0;
-	margin:0;
+.site-main {
+	background-color: rbg(0, 0, 20);
+	padding: 0;
+	margin: 0;
 }
+
 .site-main .cover,
-.site-main .cover iframe{
+.site-main .cover iframe {
 	width: 100%;
 	height: 100vh;
 	object-fit: contain;
-	padding:0;
-	margin:0;
+	padding: 0;
+	margin: 0;
 }
 
 
@@ -671,14 +671,15 @@ textarea {
 --------------------------------------------------------------*/
 
 
-.event-thumbnail{
-	border: 2px red solid;
+.event-thumbnail {
+	border: 2px rgb(72, 255, 0) solid;
 	display: flex;
 	flex-direction: row;
 	justify-content: baseline;
 	align-items: flex-start;
 }
-.event-thumbnail img{
+
+.event-thumbnail img {
 	max-width: 300px;
 	max-height: 300px;
 	object-fit: cover;
@@ -758,7 +759,7 @@ textarea {
 .posts-navigation,
 .site-main
 .post-navigation {
-	margin: 0 0 0em;
+	margin: 0 0 0;
 }
 
 .comment-navigation .nav-links,
@@ -788,7 +789,7 @@ textarea {
 
 .post,
 .page {
-	margin: 0 0 0em;
+	margin: 0 0 0;
 }
 
 .updated:not(.published) {
@@ -801,9 +802,13 @@ textarea {
 	margin: 0;
 }
 
+.entry-title {
+	margin: 0;
+}
+
 .page-links {
 	clear: both;
-	margin: 0 0 0em;
+	margin: 0 0 0;
 }
 
 /* Comments
