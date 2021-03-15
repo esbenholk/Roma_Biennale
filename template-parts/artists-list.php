@@ -1,17 +1,22 @@
-<div id="artists">
+<div id="artists" class="row_column centering">
 			<?php $args = array (
 				'post_type' => '>Artist',
+				'posts_per_page' => '-1',
 				); // gets Artists
-			
-				$the_query = new WP_Query($args);
-			
-				while( $the_query->have_posts() ) : $the_query->the_post();
-					?><h1>hej artist </h1><?php
-
-					get_template_part( 'template-parts/artist-thumbnail', 'page' );
-
-				endwhile; 
-				
-				wp_reset_postdata(); 
+				$the_query = new WP_Query($args4);
 			?>
+		
+			
+			<div class="artist-list"><?php
+				while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+				
+				<a href=<?php the_permalink() ?>>
+				 <?php the_title();  ?>
+				</a>
+				
+				<?php endwhile; ?>	
+			</div>
+
+			 
+			<?php wp_reset_postdata(); ?>
 </div>

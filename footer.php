@@ -11,24 +11,36 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'roma_biennale' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'roma_biennale' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'roma_biennale' ), 'roma_biennale', '<a href="http://underscores.me/">GHOLK</a>' );
+
+<footer id="colophon" class="site-footer flex-row" id="mastfooter">
+		
+		<div class="newsletter-signup">
+			<?php if ( is_active_sidebar( 'newsletter_signup' ) ) : ?>
+				<?php dynamic_sidebar( 'newsletter_signup' ); ?>
+			<?php endif; ?>
+		</div>
+		
+		<div class="footer-site-branding">
+			
+			<h1 id="headline"><?php bloginfo( 'name' ); ?></h1>
+
+			<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'menu-3',
+						'menu_id'        => 'social-media-icons',
+						'menu_class' => 'social-media-icons flex-row'
+					)
+				);
 				?>
 		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+</footer><!-- #colophon -->
 
 <?php wp_footer(); ?>
+
+</div><!-- #page -->
+
+
 
 </body>
 </html>

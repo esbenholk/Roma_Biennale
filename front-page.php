@@ -12,10 +12,52 @@
  * @package Roma_Biennale
  */
 
-get_header();
+	get_header();
+
+    $my_excerpt = get_the_excerpt();
+     if($my_excerpt !='') {
+        $my_excerpt = $my_excerpt;
+     } else{
+        $my_excerpt = "WE ARE HERE! • BERLIN – ONLINE – WORLDWIDE • 8.4.–24.10.21 • WE ARE HERE! • BERLIN – ONLINE – WORLDWIDE • 8.4.–24.10.21 • WE ARE HERE! • BERLIN – ONLINE – WORLDWIDE • 8.4.–24.10.21 • WE ARE HERE! • BERLIN • ONLINE • WORLD";
+     }
+
 ?>
 
 	<main id="primary" class="site-main">
+		<div id="ticker1">
+                <div class="elements">                
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+								<a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+								<a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                                <a href="/" class="ticker-object"> <?php echo $my_excerpt ?> </a>
+                </div>        
+        </div>
 
 	
 		<?php while ( have_posts() ) :
@@ -29,6 +71,10 @@ get_header();
 
 	</main><!-- #main -->
 
+
+
+
 <?php
-get_sidebar();
+
+
 get_footer();

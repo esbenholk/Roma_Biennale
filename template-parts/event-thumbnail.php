@@ -7,44 +7,48 @@
  * @package Roma_Biennale
  */
 	$title = get_field('title', false, false);
-	$date = get_field('date', false, false);
-	$date_formatted = date_create($date);
-	$venue = get_field('venue', false, false);
-	$address = get_field('address', false, false);
-	$city = get_field('city', false, false);
-	$artists = get_field('artists__organisers', false, false);
-	$urls = get_field('urls', false, false);
+    $place = get_field('place', false, false);
+    $type = get_field('type', false, false);
 
-    ?>
+	$start_date = get_field('event_start', false, false);
+    $end_date = get_field('event_end', false, false);
+    $timezone = get_field('timezone', false, false);
 
-    <article class="event-thumbnail" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    $dayofweek = date('w', strtotime($start_date));
+    $days = array('Sun', 'Mon', 'Tue', 'Wed','Thu','Fri', 'Sat');
 
-        <a href=<?php  the_permalink() ?>>
-        <?php roma_biennale_post_thumbnail(); ?>
-            <p>Event title: <?php echo $title ?></p>
-        </a>
-        <p>Event date: <?php echo $date?>  <?php echo date_format($date_formatted,"d/m H:i")?></p> 
-        <?php if($venue) { ?>
-			<p>Event location: <?php echo $venue ?></p>
-        <?php } ?>
+?>
 
-        <?php if($city) { ?>
-			<p>city: <?php echo $city ?></p>
-        <?php } ?>
-
-        <?php if($address) { ?>
-            <p>address: <?php echo $address ?></p>
-        <?php } ?>
-       
-        <?php if($artists) { ?>
-            <p>artists: <?php echo $artists ?></p>
-        <?php } ?>
-
-        <?php if($urls) { ?>
-            <p>websites: <?php echo $urls?></p>        
-        <?php } ?>
+    <article class="event-thumbnail row" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         
-    
+        <div class="event-details row">
+
+            <div class="event-thumbnail-date column">
+                <p><?php echo $days[$dayofweek]?></p> 
+                <p class="date large"><?php echo date("d/m", strtotime($start_date));?></p>
+            </div>
+            <div class="event-thumbnail-time column">
+                <p><?php echo date("h:i", strtotime($start_date));?></p>
+                <p><?php echo date("h:i", strtotime($end_date));?></p>
+                <p><?php echo $timezone?></p>
+                
+            </div>
+            <div class="event-thumbnail-place column">
+                <p><?php echo $place?></p>
+            </div>
+
+        </div>
+
+        <div class="event-redirection row">
+                <div class="event-thumbnail-title column">
+                    <p><?php echo $title?></p>
+                    <p class="type large"><?php echo $type?></p>
+                </div>
+
+                <a class="standard-button" href=<?php the_permalink() ?>>
+                    details
+                </a>
+        </div>
 
     </article><!-- #post-<?php the_ID(); ?> -->
 
