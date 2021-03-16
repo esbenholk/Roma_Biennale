@@ -55,6 +55,7 @@ if ( ! function_exists( 'roma_biennale_setup' ) ) :
 				'menu-1' => esc_html__( 'Primary', 'roma_biennale' ),
 				'menu-2' => esc_html__( 'Language Selector', 'roma_biennale' ),
 				'menu-3' => esc_html__( 'Social Media Icons', 'roma_biennale' ),
+				'menu-4' => esc_html__( 'Inline Menu', 'roma_biennale' ),
 			)
 		);
 
@@ -232,6 +233,14 @@ function event_register() {
 
 add_action( 'init', 'event_register' );
 
+add_action( 'pre_get_posts', function ( $query ) {
+    if ( is_post_type_archive( 'event' ) && $query->is_main_query() ) {
+        $query->set( 'orderby', 'meta_value' );
+        $query->set( 'order', 'ASC' );
+        $query->set( 'meta_key', 'event_date_start' );
+    }
+} );
+
 function reg_tag() {
 	register_taxonomy_for_object_type('post_tag', 'Artists');
 	register_taxonomy_for_object_type('post_tag', 'event');
@@ -262,7 +271,30 @@ function tag_list_shortcode() {
     return ob_get_clean(); 
 } 
 	// register shortcode
-add_shortcode('tag_list', 'tag_list_shortcode'); 
+add_shortcode('important_days', 'tag_list_shortcode'); 
+
+function single_event_shortcode($atts){ 
+	ob_start();
+	foreach($atts as $att){
+
+		$args = array(
+			'p'         => $att, // ID of a page, post, or custom type
+			'post_type' => 'event'
+		  );
+		$the_query = new WP_Query($args);
+
+		while( $the_query->have_posts() ) : $the_query->the_post();  
+                        
+		get_template_part( 'template-parts/event-thumbnail', 'page' );
+
+		endwhile; 
+		
+	
+	}
+    
+} 
+	// register shortcode
+add_shortcode('artists_event', 'single_event_shortcode'); 
 
 
 // function that runs when shortcode is called
@@ -288,337 +320,87 @@ function program_add_custom_box() {
         if($pageTemplate == 'program.php' ) {
 
 				add_meta_box(
-					'wporg_box_id',                 // Unique ID
+					'program_sorting_details',                 // Unique ID
 					'Program Sorting',      // Box title
 					'roma_trial_programming_custom_box_html'  // Content callback, must be of type callable                        // Post type
 				);
 			
         }
+
+		add_meta_box(
+			'event_details',
+			'Event Details',
+			'roma_trial_event_custom_box_html',
+			'event'
+		);
+		
     }
+
+
  
 }
 add_action( 'add_meta_boxes', 'program_add_custom_box' );
 
 
 function roma_trial_programming_custom_box_html( $post ) {
-	$category1_headline_line1 = get_post_meta($post->ID, 'category1_title', true);
-    ?>
-	<div style="display: flex-column; justify-content: space-between; background-color: yellow;">
-		<div style="display: flex;">
-			<div style="width:60%; display: flex-column; margin-left: 20px; margin-right: 20px;">
-				<label style="width:100%;" for="category1_title">TITLE</label>
-				<input style="width:100%;" name="category1_title" id="category1_title" type="text" class="postbox"size="100%" placeholder=""/>
-				<label style="width:100%;" for="category1_title2">OPTIONAL SECOND LINE TO TITLE</label>
-				<input style="width:100%;" name="category1_title2" id="category1_title2" type="text" class="postbox"size="100%"/>	
-			</div>
+	include plugin_dir_path( __FILE__ ) . './metaforms/program_meta_form.php';
+}
 
-			<div style="width:20%; margin-right: 20px;">
-				<label style="width:100%;" for="category1_date">DATE</label>
-				<input style="width:100%;" name="category1_date" id="category1_date" type="date" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category1_category_key">Category Key</label>
-				<input style="width:100%;" name="category1_category_key" id="category1_category_key" type="text" class="postbox"size="100%" placeholder="must correlate with event category"/>
-			</div>
-		</div>
-
-		<div style="width:100%; display: flex-column; margin-left: 20px; margin-top: 20px">
-			<textarea name="category1_description" id="category1_description" rows="4" cols="50" size="100%" height="200">
-				describe the day
-			</textarea>
-		</div>
-	</div>
-
-	<div style="display: flex-column; justify-content: space-between; background-color: pink;">
-		<div style="display: flex;">
-			<div style="width:60%; display: flex-column; margin-left: 20px; margin-right: 20px;">
-				<label style="width:100%;" for="category2_title">TITLE</label>
-				<input style="width:100%;" name="category2_title" id="category2_title" type="text" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category2_title2">OPTIONAL SECOND LINE TO TITLE</label>
-				<input style="width:100%;" name="category2_title2" id="category1_title2" type="text" class="postbox"size="100%"/>	
-			</div>
-
-			<div style="width:20%; margin-right: 20px;">
-				<label style="width:100%;" for="category2_date">DATE</label>
-				<input style="width:100%;" name="category2_date" id="category2_date" type="date" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category2_category_key">Category Key</label>
-				<input style="width:100%;" name="category2_category_key" id="category2_category_key" type="text" class="postbox"size="100%" placeholder="must correlate with event category"/>
-			</div>
-		</div>
-
-		<div style="width:100%; display: flex-column; margin-left: 20px; margin-top: 20px">
-			<textarea name="category2_description" id="category2_description" rows="4" cols="50" size="100%" height="200">
-				describe the day
-			</textarea>
-		</div>
-	</div>
-
-	<div style="display: flex-column; justify-content: space-between; background-color: grey;">
-		<div style="display: flex;">
-			<div style="width:60%; display: flex-column; margin-left: 20px; margin-right: 20px;">
-				<label style="width:100%;" for="category3_title">TITLE</label>
-				<input style="width:100%;" name="category3_title" id="category3_title" type="text" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category3_title2">OPTIONAL SECOND LINE TO TITLE</label>
-				<input style="width:100%;" name="category3_title2" id="category1_title2" type="text" class="postbox"size="100%"/>	
-			</div>
-
-			<div style="width:20%; margin-right: 20px;">
-				<label style="width:100%;" for="category3_date">DATE</label>
-				<input style="width:100%;" name="category3_date" id="category3_date" type="date" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category3_category_key">Category Key</label>
-				<input style="width:100%;" name="category3_category_key" id="category3_category_key" type="text" class="postbox"size="100%" placeholder="must correlate with event category"/>
-			</div>
-		</div>
-
-		<div style="width:100%; display: flex-column; margin-left: 20px; margin-top: 20px">
-			<textarea name="category3_description" id="category3_description" rows="4" cols="50" size="100%" height="200">
-				describe the day
-			</textarea>
-		</div>
-	</div>
-
-	<div style="display: flex-column; justify-content: space-between; background-color: lightblue;">
-		<div style="display: flex;">
-			<div style="width:60%; display: flex-column; margin-left: 20px; margin-right: 20px;">
-				<label style="width:100%;" for="category4_title">TITLE</label>
-				<input style="width:100%;" name="category4_title" id="category4_title" type="text" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category4_title2">OPTIONAL SECOND LINE TO TITLE</label>
-				<input style="width:100%;" name="category4_title2" id="category1_title2" type="text" class="postbox"size="100%"/>	
-			</div>
-
-			<div style="width:20%; margin-right: 20px;">
-				<label style="width:100%;" for="category4_date">DATE</label>
-				<input style="width:100%;" name="category4_date" id="category4_date" type="date" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category4_category_key">Category Key</label>
-				<input style="width:100%;" name="category4_category_key" id="category4_category_key" type="text" class="postbox"size="100%" placeholder="must correlate with event category"/>
-			</div>
-		</div>
-
-		<div style="width:100%; display: flex-column; margin-left: 20px; margin-top: 20px">
-			<textarea name="category4_description" id="category4_description" rows="4" cols="50" size="100%" height="200">
-				describe the day
-			</textarea>
-		</div>
-	</div>
-
-	<div style="display: flex-column; justify-content: space-between; background-color: orange;">
-		<div style="display: flex;">
-			<div style="width:60%; display: flex-column; margin-left: 20px; margin-right: 20px;">
-				<label style="width:100%;" for="category5_title">TITLE</label>
-				<input style="width:100%;" name="category5_title" id="category5_title" type="text" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category5_title2">OPTIONAL SECOND LINE TO TITLE</label>
-				<input style="width:100%;" name="category5_title2" id="category1_title2" type="text" class="postbox"size="100%"/>	
-			</div>
-
-			<div style="width:20%; margin-right: 20px;">
-				<label style="width:100%;" for="category5_date">DATE</label>
-				<input style="width:100%;" name="category5_date" id="category5_date" type="date" class="postbox"size="100%"/>
-
-				<label style="width:100%;" for="category5_category_key">Category Key</label>
-				<input style="width:100%;" name="category5_category_key" id="category5_category_key" type="text" class="postbox"size="100%" placeholder="must correlate with event category"/>
-			</div>
-		</div>
-
-		<div style="width:100%; display: flex-column; margin-left: 20px; margin-top: 20px">
-			<textarea name="category5_description" id="category5_description" rows="4" cols="50" size="100%" height="200">
-				describe the day
-			</textarea>
-		</div>
-	</div>
-
-	<?php
+function roma_trial_event_custom_box_html( $post ) {
+	include plugin_dir_path( __FILE__ ) . './metaforms/event_meta_form.php';
 }
 
 function program_save_postdata( $post_id ) {
-    if ( array_key_exists( 'category1_title', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category1_title',
-            $_POST['category1_title']
-        );
-    }
-	if ( array_key_exists( 'category1_title2', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category1_title2',
-            $_POST['category1_title2']
-        );
-    }
-	if ( array_key_exists( 'category1_date', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category1_date',
-            $_POST['category1_date']
-        );
-    }
-	if ( array_key_exists( 'category1_description', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category1_description',
-            $_POST['category1_description']
-        );
-    }
-	if ( array_key_exists( 'category1_category_key', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category1_category_key',
-            $_POST['category1_category_key']
-        );
-    }
 
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if ( $parent_id = wp_is_post_revision( $post_id ) ) {
+        $post_id = $parent_id;
+    }
+    $fields = [
+        'category5_category_key',
+        'category5_description',
+        'category5_date',
+		'category5_title2',
+		'category5_title',
+		'category5_color',
+		'category4_category_key',
+		'category4_description',
+		'category4_date',
+		'category4_title2',
+		'category4_title',
+		'category4_color',
+		'category3_category_key',
+		'category3_description',
+		'category3_date',
+		'category3_title2',
+		'category3_title',
+		'category3_color',
+		'category2_category_key',
+		'category2_description',
+		'category2_date',
+		'category2_title2',
+		'category2_title',
+		'category2_color',
+		'category1_category_key',
+		'category1_description',
+		'category1_date',
+		'category1_title2',
+		'category1_title',
+		'category1_color',
 
-	if ( array_key_exists( 'category2_title', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category2_title',
-            $_POST['category2_title']
-        );
-    }
-	if ( array_key_exists( 'category2_title2', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category2_title2',
-            $_POST['category2_title2']
-        );
-    }
-	if ( array_key_exists( 'category2_date', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category2_date',
-            $_POST['category2_date']
-        );
-    }
-	if ( array_key_exists( 'category2_description', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category2_description',
-            $_POST['category2_description']
-        );
-    }
-	if ( array_key_exists( 'category2_category_key', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category2_category_key',
-            $_POST['category2_category_key']
-        );
-    }
+		'event_date_start',
+		'event_date_end',
+		'event_date_timezone',
+		'event_place',
+		'event_livestream_url'
 
+    ];
+    foreach ( $fields as $field ) {
+        if ( array_key_exists( $field, $_POST ) ) {
+            update_post_meta( $post_id, $field, sanitize_text_field( $_POST[$field] ) );
+        }
+     }
 
-	if ( array_key_exists( 'category3_title', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category3_title',
-            $_POST['category3_title']
-        );
-    }
-	if ( array_key_exists( 'category3_title2', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category3_title2',
-            $_POST['category3_title2']
-        );
-    }
-	if ( array_key_exists( 'category3_date', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category3_date',
-            $_POST['category3_date']
-        );
-    }
-	if ( array_key_exists( 'category3_description', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category3_description',
-            $_POST['category3_description']
-        );
-    }
-	if ( array_key_exists( 'category3_category_key', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category3_category_key',
-            $_POST['category3_category_key']
-        );
-    }
-
-
-	if ( array_key_exists( 'category4_title', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category4_title',
-            $_POST['category4_title']
-        );
-    }
-	if ( array_key_exists( 'category4_title2', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category4_title2',
-            $_POST['category4_title2']
-        );
-    }
-	if ( array_key_exists( 'category4_date', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category4_date',
-            $_POST['category4_date']
-        );
-    }
-	if ( array_key_exists( 'category4_description', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category4_description',
-            $_POST['category4_description']
-        );
-    }
-	if ( array_key_exists( 'category4_category_key', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category4_category_key',
-            $_POST['category4_category_key']
-        );
-    }
-
-
-	if ( array_key_exists( 'category5_title', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category5_title',
-            $_POST['category5_title']
-        );
-    }
-	if ( array_key_exists( 'category5_title2', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category5_title2',
-            $_POST['category5_title2']
-        );
-    }
-	if ( array_key_exists( 'category5_date', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category5_date',
-            $_POST['category5_date']
-        );
-    }
-	if ( array_key_exists( 'category5_description', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category5_description',
-            $_POST['category5_description']
-        );
-    }
-	if ( array_key_exists( 'category5_category_key', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            'category5_category_key',
-            $_POST['category5_category_key']
-        );
-    }
 }
 add_action( 'save_post', 'program_save_postdata' );
 

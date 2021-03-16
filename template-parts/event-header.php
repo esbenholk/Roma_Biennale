@@ -58,9 +58,7 @@
                 </div>
 
                 <div class="coming_svg">
-                            <a href=<?php the_permalink() ?>>
-                                <img src="icons/wheel.png" />
-                            </a>
+                    <button onclick="history.go(-1);">X</button>
                 </div>
 
 

@@ -7,7 +7,7 @@
  * @package Roma_Biennale
  */
 
-get_header('artist');
+get_header('program');
 ?>
 
 	<main id="primary" class="site-main">
@@ -16,29 +16,17 @@ get_header('artist');
 		while ( have_posts() ) :
 			the_post(); ?>
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); 
-			$my_excerpt = get_the_excerpt(); ?>>
-		
+			<article id="post-<?php the_ID(); ?>" <?php post_class();?>>
+	
+				<?php get_template_part( 'template-parts/event-header', 'page' );?>
 
-			<div class="single-post-header flex-row">
-
-				<p><?php echo $my_excerpt ?></p>
-			
-				<button onclick="history.go(-1);">X</button>
-		
-			</div>
-		
 			<div class="entry-content">
 				<?php the_content(); ?>
 			</div><!-- .entry-content -->
 			
 			
-			<p><?php the_tags(); ?></p>
-		
 			</article><!-- #post-<?php the_ID(); ?> -->
 			
-
-
 		<?php endwhile; // End of the loop.
 		?>
 

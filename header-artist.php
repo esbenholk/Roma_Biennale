@@ -33,7 +33,7 @@
 	<header id="masthead" class="site-header flex-row white">
 
 		 	
-		<?php the_title( '<h2 class="large-headline">', '</h2>' ); ?>
+		<?php the_title( '<h2 class="large-headline" id="header_headline">', '</h2>' ); ?>
 
 
 		<div class="menu-navigation flex-row" id="extra-menu">

@@ -6,28 +6,35 @@
 
 
 jQuery(document).ready(function($) {
-  if($("#ticker").length){
+
+  $("#loader").fadeOut()
+
+  if($("#ticker")){
 
     ticker("ticker1");
   
     function ticker(element) {
       
       var ticker = document.getElementById(element);
+      if(ticker){
+        var headlines = ticker.querySelector(".elements");
+        var links = headlines.getElementsByTagName("a");
+        var left = headlines.offsetLeft;
+        var animId;
+    
+        // headlines.addEventListener("mouseenter", function() {
+        //   cancelAnimationFrame(animId);
+        // });
+    
+        // headlines.addEventListener("mouseleave", function() {
+        //   moveHeadLines();
+        // });
+    
+        moveHeadLines();
+
+      }
   
-      var headlines = ticker.querySelector(".elements");
-      var links = headlines.getElementsByTagName("a");
-      var left = headlines.offsetLeft;
-      var animId;
   
-      // headlines.addEventListener("mouseenter", function() {
-      //   cancelAnimationFrame(animId);
-      // });
-  
-      // headlines.addEventListener("mouseleave", function() {
-      //   moveHeadLines();
-      // });
-  
-      moveHeadLines();
   
       function moveHeadLines() {
         left--;

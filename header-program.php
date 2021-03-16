@@ -30,12 +30,11 @@
 
 <div id="page" class="site">
 
-	<header id="masthead" class="site-header flex-row">
-		<div id="loader"></div>
+	<header id="masthead" class="site-header flex-row white">
 
-		<a id="header_headline"class="large-headline" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		 		<?php bloginfo( 'name' ); ?>
-		</a> 
+		 	
+		<h2 id="header_headline" class="large-headline">PROGRAM</h2>
+
 
 		<div class="menu-navigation flex-row" id="extra-menu">
 				<?php
