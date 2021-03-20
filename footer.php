@@ -6,13 +6,13 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Roma_Biennale
+ * @package romanistan
  */
 
 ?>
 
 
-<footer id="colophon" class="site-footer flex-row" id="mastfooter">
+<footer id="mastfooter" class="site-footer flex-row" >
 		
 		<div class="newsletter-signup">
 			<?php if ( is_active_sidebar( 'newsletter_signup' ) ) : ?>
@@ -20,20 +20,16 @@
 			<?php endif; ?>
 		</div>
 		
-		<div class="footer-site-branding">
 			
-			<h1 id="headline"><?php bloginfo( 'name' ); ?></h1>
-
 			<?php
 				wp_nav_menu(
 					array(
-						'theme_location' => 'menu-3',
+						'theme_location' => 'menu-2',
 						'menu_id'        => 'social-media-icons',
 						'menu_class' => 'social-media-icons flex-row'
 					)
 				);
-				?>
-		</div><!-- .site-info -->
+			?>
 </footer><!-- #colophon -->
 
 <?php wp_footer(); ?>

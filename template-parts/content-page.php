@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Roma_Biennale
+ * @package romanistan
  */
 
 ?>
@@ -14,7 +14,7 @@
 		<?php the_title( '<h1 class="large-headline">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<?php roma_biennale_post_thumbnail(); ?>
+	<?php romanistan_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php

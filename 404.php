@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Roma_Biennale
+ * @package romanistan
  */
 
 get_header();
@@ -13,45 +13,26 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'roma_biennale' ); ?></h1>
-			</header><!-- .page-header -->
+			<!-- <div class="graphic-divider-container">
+				<div class="graphic-divider blue">
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'roma_biennale' ); ?></p>
+				</div>
+				<div class="graphic-divider green">
 
-					<?php
-					get_search_form();
+				</div>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+			</div> -->
+				<?php echo get_custom_logo( $blog_id ) ?>
+				<p><?php esc_html_e( 'This is a 404 message', 'romanistan' ); ?></p>
+			<!-- <div class="graphic-divider-container">
+				<div class="graphic-divider blue">
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'roma_biennale' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
+				</div>
+				<div class="graphic-divider green">
 
-					<?php
-					/* translators: %1$s: smiley */
-					$roma_biennale_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'roma_biennale' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$roma_biennale_archive_content" );
+				</div>
 
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
+			</div> -->
 		</section><!-- .error-404 -->
 
 	</main><!-- #main -->

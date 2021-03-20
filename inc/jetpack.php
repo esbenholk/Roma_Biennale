@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package Roma_Biennale
+ * @package romanistan
  */
 
 /**
@@ -14,13 +14,13 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function roma_biennale_jetpack_setup() {
+function romanistan_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support(
 		'infinite-scroll',
 		array(
 			'container' => 'main',
-			'render'    => 'roma_biennale_infinite_scroll_render',
+			'render'    => 'romanistan_infinite_scroll_render',
 			'footer'    => 'page',
 		)
 	);
@@ -33,7 +33,7 @@ function roma_biennale_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'roma_biennale-style',
+				'stylesheet' => 'romanistan-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',
@@ -48,12 +48,12 @@ function roma_biennale_jetpack_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'roma_biennale_jetpack_setup' );
+add_action( 'after_setup_theme', 'romanistan_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function roma_biennale_infinite_scroll_render() {
+function romanistan_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

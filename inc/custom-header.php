@@ -8,39 +8,39 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package Roma_Biennale
+ * @package romanistan
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses roma_biennale_header_style()
+ * @uses romanistan_header_style()
  */
-function roma_biennale_custom_header_setup() {
+function romanistan_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'roma_biennale_custom_header_args',
+			'romanistan_custom_header_args',
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'roma_biennale_header_style',
+				'wp-head-callback'   => 'romanistan_header_style',
 			)
 		)
 	);
 }
-add_action( 'after_setup_theme', 'roma_biennale_custom_header_setup' );
+add_action( 'after_setup_theme', 'romanistan_custom_header_setup' );
 
-if ( ! function_exists( 'roma_biennale_header_style' ) ) :
+if ( ! function_exists( 'romanistan_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see roma_biennale_custom_header_setup().
+	 * @see romanistan_custom_header_setup().
 	 */
-	function roma_biennale_header_style() {
+	function romanistan_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

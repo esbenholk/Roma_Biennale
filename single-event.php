@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Roma_Biennale
+ * @package romanistan
  */
 
 get_header('program');
