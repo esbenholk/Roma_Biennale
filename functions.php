@@ -55,7 +55,7 @@ if ( ! function_exists( 'roma_biennale_setup' ) ) :
 				'menu-1' => esc_html__( 'Primary', 'roma_biennale' ),
 				'menu-2' => esc_html__( 'Language Selector', 'roma_biennale' ),
 				'menu-3' => esc_html__( 'Social Media Icons', 'roma_biennale' ),
-				'menu-4' => esc_html__( 'Inline Menu', 'roma_biennale' ),
+				'menu-4' => esc_html__( 'Footer', 'roma_biennale' ),
 			)
 		);
 
@@ -111,6 +111,8 @@ if ( ! function_exists( 'roma_biennale_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'roma_biennale_setup' );
 
+
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -155,7 +157,7 @@ function roma_biennale_scripts() {
 
 	wp_enqueue_script( 'roma_biennale-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'roma_biennale-menu-styling', get_template_directory_uri() . '/js/menu.js', array('jquery'), _S_VERSION, true );
-	wp_enqueue_script( 'roma_biennale-ticker', get_template_directory_uri() . '/js/tickers.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'roma_biennale-overlay', get_template_directory_uri() . '/js/overlay.js', array('jquery'), _S_VERSION, true );
 
 
 }
@@ -199,7 +201,7 @@ function poster_register() {
                 'singular_name' => __( 'poster' )
             ),
             'public' => true,
-            'has_archive' => false,
+            'has_archive' => true,
             'rewrite' => array('slug' => 'posters'),
 			'show_in_rest' => true,
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
@@ -387,6 +389,11 @@ function program_save_postdata( $post_id ) {
 		'category1_title2',
 		'category1_title',
 		'category1_color',
+		'category1_color2',
+		'category2_color2',
+		'category3_color2',
+		'category4_color2',
+		'category5_color2',
 
 		'event_date_start',
 		'event_date_end',

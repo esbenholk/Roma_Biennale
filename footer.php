@@ -12,28 +12,36 @@
 ?>
 
 
-<footer id="colophon" class="site-footer flex-row" id="mastfooter">
+<footer class="site-footer flex-row flex-between standard-container" id="mastfooter">
 		
-		<div class="newsletter-signup">
-			<?php if ( is_active_sidebar( 'newsletter_signup' ) ) : ?>
-				<?php dynamic_sidebar( 'newsletter_signup' ); ?>
-			<?php endif; ?>
-		</div>
-		
-		<div class="footer-site-branding">
-			
-			<h1 id="headline"><?php bloginfo( 'name' ); ?></h1>
+		<div class="fullwidth flex-row flex-between flex-baseline">
+			<div id="newsletter" class="newsletter-signup">
+				<?php if ( is_active_sidebar( 'newsletter_signup' ) ) : ?>
+					<?php dynamic_sidebar( 'newsletter_signup' ); ?>
+				<?php endif; ?>
+			</div>
 
 			<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-3',
-						'menu_id'        => 'social-media-icons',
-						'menu_class' => 'social-media-icons flex-row'
-					)
-				);
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-4',
+							'menu_id'        => 'footer-menu',
+							'menu_class' => 'flex-column column-wrap'
+						)
+					);
 				?>
-		</div><!-- .site-info -->
+			
+				
+			<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-3',
+							'menu_id'        => 'social-media-icons',
+							'menu_class' => 'social-media-icons flex-row footer-icons'
+						)
+					);
+			?>
+		</div>
 </footer><!-- #colophon -->
 
 <?php wp_footer(); ?>

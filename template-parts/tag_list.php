@@ -20,6 +20,8 @@
   $category1->description = get_post_meta($post->ID, 'category1_description', false);
   $category1->key = get_post_meta($post->ID, 'category1_category_key', false);
   $category1->color = get_post_meta($post->ID, 'category1_color', false);
+  $category1->color2 = get_post_meta($post->ID, 'category1_color2', false);
+
 
   $category2=new stdClass();
   $category2->title=get_post_meta($post->ID, 'category2_title', false);
@@ -29,6 +31,7 @@
   $category2->description = get_post_meta($post->ID, 'category2_description', false);
   $category2->key = get_post_meta($post->ID, 'category2_category_key', false);
   $category2->color = get_post_meta($post->ID, 'category2_color', false);
+  $category2->color2 = get_post_meta($post->ID, 'category2_color2', false);
 
 
   $category3=new stdClass();
@@ -39,6 +42,7 @@
   $category3->description = get_post_meta($post->ID, 'category3_description', false);
   $category3->key = get_post_meta($post->ID, 'category3_category_key', false);
   $category3->color = get_post_meta($post->ID, 'category3_color', false);
+  $category3->color2 = get_post_meta($post->ID, 'category3_color2', false);
 
   $category4=new stdClass();
   $category4->title=get_post_meta($post->ID, 'category4_title', false);
@@ -48,6 +52,8 @@
   $category4->description = get_post_meta($post->ID, 'category4_description', false);
   $category4->key = get_post_meta($post->ID, 'category4_category_key', false);
   $category4->color = get_post_meta($post->ID, 'category4_color', false);
+  $category4->color2 = get_post_meta($post->ID, 'category4_color2', false);
+
 
 
   $category5=new stdClass();
@@ -58,6 +64,8 @@
   $category5->description = get_post_meta($post->ID, 'category5_description', false);
   $category5->key = get_post_meta($post->ID, 'category5_category_key', false);
   $category5->color = get_post_meta($post->ID, 'category5_color', false);
+  $category5->color2 = get_post_meta($post->ID, 'category5_color2', false);
+
 
   array_push($categories, $category1, $category2, $category3, $category4, $category5);
 
@@ -66,29 +74,45 @@
   });
   ?>
 
+<?php  
+    if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+         $url = "https://";   
+    else  
+         $url = "http://";   
+    // Append the host(domain name, ip) to the URL.   
+    $url.= $_SERVER['HTTP_HOST'];   
+    
+    // Append the requested resource location to the URL   
+    $url.= $_SERVER['REQUEST_URI'];    
+        
+
+    if (strpos($url, "de") !== false) {
+        $program_page = "programm";
+    } else {
+        $program_page = "program";
+    }
+  
+  ?>  
+
+
 
 
   <?php foreach($categories as $category) { 
         $date = str_replace('-','.',date("j-n-y",  $category -> date_string));
         ?> 
 
-                    <div class="flex-column program-event-container">
-                        <a href="../program#<?php echo $category-> key[0]?>">
-                          <div class="flex-row program-event">
-                              
-                              <div class="flex-column">
-                                  <h4><?php echo $category -> title[0]?></h4>
-                                  <?php if($category -> title2[0]){
-                                      ?><h4><?php echo $category -> title2[0]?></h4><?php
-                                  }?>
-                              </div>
+                    <div class="standard-container flex-column" style="background-color:<?php echo $category -> color[0]?>; color:<?php echo $category -> color2[0]?>;">
+                        <a class="flex-column description" href="../<?php echo $program_page?>#<?php echo $category-> key[0]?>" style="color:<?php echo $category -> color2[0]?>;">
 
                               <?php if($category -> date[0]){ ?>
-                                <div class="date">
-                                  <h4><?php echo $date?></h4>
-                                </div>
+                                  <h4 class="date"><?php echo $date?></h4>
                               <?php }?>
-                          </div>
+                              
+                              <h2 class="title"><?php echo $category -> title[0]?></h2>
+                  
+                              <?php if($category -> key[0]){ ?>
+                                  <h4 class="key">#<?php echo $category -> key[0]?></h4>
+                              <?php }?>
                         </a>
                      </div> <!-- //.flex-colum -->
   
