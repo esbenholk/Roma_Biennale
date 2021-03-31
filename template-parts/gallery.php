@@ -1,6 +1,6 @@
 <?php
 $args = array (
-        'post_type' => 'poster',
+        'post_type' => 'campaign_day',
         'post_status'     => 'published',
         'orderby' => 'rand'
 );
@@ -19,20 +19,20 @@ if ( $custom_query->have_posts() ):
         'post_mime_type' => 'image',
         'orderby' => 'rand'));
 
-    
         shuffle($attachments);
      
         foreach($attachments as $att_id => $attachment) {
                             
              array_push($posters, $attachment);
         }
-  
+
     endwhile;
 endif;
 
 if ( $posters ): ?>
 
     <div class="flex-row horizontal-scroll">
+
         
     <?php foreach($posters as $att_id => $poster) {
                             

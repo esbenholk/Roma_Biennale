@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying posts
+ * Template part for Event Details
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -12,60 +12,57 @@
 
     if($event->start_date){
         $event->date_string = strtotime($event->start_date[0]);
-        $short_date = str_replace('-','.',date("j-n",  $event -> date_string));
+        $short_date = str_replace('-','.', date("j-n-y",  $event -> date_string));
     }
 
     $event->timezone=get_post_meta($post->ID, 'event_date_timezone', false);
    
     $event->place = get_post_meta($post->ID, 'event_place', false);
     $event->livestream_url = get_post_meta($post->ID, 'event_livestream_url', false);
-
-    
-
+  
 ?>
 
-    <article class="" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <article class="active flex-column" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         
-        <div class="flex-row container">
+        <div class="flex-row flex-between event-container ">
 
                 <div class="event-details flex-column">
                     <?php 
                     if($short_date){ ?>
-                        <p class="date_name"><?php echo $short_date?> - <?php the_title();  ?></p><?php
+                        <p class="event-name"><?php the_title();  ?></p><?php
                     }
                     ?>
                     
-                    <div class="time_place flex-row"><?php
+                    <div class="flex-row"><?php
+
+                        if($short_date){ ?>
+                            <p class="event-detail date"><?php echo $short_date?></p><?php
+                        }
                         if($event->date_string){?>
-                            <p><?php echo date("h:i", $event->date_string); ?></p><?php
+                            <p class="event-detail startdate"><u class="dot">•</u><?php echo date("h:i", $event->date_string); ?>-<?php echo date("h:i", strtotime($event->end_date[0])); ?>   <?php echo $event-> timezone[0]?></p><?php
                         } 
-                        if($event->end_date[0]){
-                            ?> <p> - <?php echo date("h:i", strtotime($event->end_date[0])); ?> </p> <?php
-                        } 
-                        if($event-> timezone[0]){?>
-                        <p>·<?php echo $event-> timezone[0]?></p>
-                        <?php } 
+                     
 
                         if($event-> place[0]){?>
-                        <p>·<?php echo $event-> place[0]?></p>
+                        <p class="event-detail time"><u class="dot">•</u><?php echo $event-> place[0]?></p>
                         <?php } 
                         if($event-> livestream_url[0]){?>
-                            <a class="livestream_url" href="<?php echo $event->livestream_url[0]?>"><p> · Livestream </p></a>
+                            <a class="event-detail livestream-url" href="<?php echo $event->livestream_url[0]?>"><u class="dot">•</u><u>Livestream</u></a>
                         <?php } ?>
                     </div>
 
 
                 </div>
 
-                <div class="coming_svg">
-                            <a href=<?php the_permalink() ?>>
-                                <img src="icons/wheel.png" />
-                            </a>
-                </div>
-
-
-
+              
         </div>
+
+        <div class="event-container entry-content event-description">
+            <?php the_content(); ?>
+        </div><!-- .entry-content -->
+
+   
+      
 
 
 

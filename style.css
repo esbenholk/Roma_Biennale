@@ -63,7 +63,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 :root {
 	--black: #131313;
 	--standard-container-height: 113px;
-	--yellow: yellow;
+	--yellow: #FDED4E;
   }
 
 
@@ -246,6 +246,8 @@ sup {
  */
 img {
 	border-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 /* Forms
@@ -573,13 +575,13 @@ object {
 
 img {
 	width: 100%;
-	object-fit:contain;
 }
 
 a:-webkit-any-link,
 a{
 	height: auto;
-	text-decoration: none;
+	text-decoration: inherit;
+	color: inherit;
 }
 
 /* Links
@@ -668,6 +670,61 @@ select {
 textarea {
 	width: 100%;
 }
+/* Content
+--------------------------------------------- */
+
+.entry-content figure,
+.entry-content img,
+.entry-content iframe,
+.entry-content table,
+.entry-content {
+	margin: 0;
+	padding: 0;
+}
+
+h1{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 98px;
+	line-height: 87px;
+	color: var(--black);
+	padding: 17px 30px 17px 30px;
+
+}
+.standard-container h1{
+	padding: 17px 0px 17px 0px;
+}
+
+
+.entry-content p{
+	font-family: Wremena;
+	font-style: normal;
+	font-weight: normal;
+	height: auto;
+	font-size: 36px;
+	line-height: 108.8%;
+}
+
+ul,
+li{
+	margin:0;
+}
+
+/*--------------------------------------------------------------
+# Pages
+--------------------------------------------------------------*/
+
+.fixed-headline{
+	position: fixed;
+	max-width: 380px;
+	z-index: -1;
+	mix-blend-mode: invert;
+}
+
+
+
+
 
 /*--------------------------------------------------------------
 # Layouts
@@ -682,11 +739,20 @@ textarea {
 .flex-start{
 	justify-content: flex-start;
 }
+.flex-top{
+	align-items: flex-start;
+}
+.flex-wrap{
+	flex-wrap: wrap;
+}
 .flex-end{
 	justify-content: flex-end;
 }
 .flex-between{
 	justify-content: space-between;
+}
+.flex-bottom{
+	align-items: flex-end;
 }
 
 .flex-column{
@@ -694,13 +760,24 @@ textarea {
 	flex-direction: column;
 	justify-content: center;
 }
+
+.flex-1{
+	flex-grow: 1;
+}
+.flex-2{
+	flex-grow: 2;
+}
 .fullwidth{
 	width: 100%;
 }
 
 .column-wrap{
 	flex-wrap: wrap;
-	max-height: 180px;
+	max-height: 150px;
+}
+.lowz{
+	position: relative;
+	z-index: -999;
 }
 
 .cover,
@@ -717,6 +794,20 @@ textarea {
 .standard-container{
 	min-height: var(--standard-container-height);
 	padding: 0px 30px 0px 30px;
+}
+.small-standard-container{
+	min-height: 55.5px;
+	padding: 0px 30px 0px 30px;
+}
+.event-container{
+	padding: 17px 30px 13px 30px;
+}
+
+.anchor {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
 }
 
 /*--------------------------------------------------------------
@@ -744,6 +835,12 @@ textarea {
 	height: 44px;
 	width: auto;
 }
+.back-button{
+	width: 64px;
+	height: auto;
+	display: inline-block
+}
+
 .headertitle .title{
 	font-family: Karrik;
 	font-style: normal;
@@ -752,6 +849,7 @@ textarea {
 	line-height: 22px;
 	text-transform: uppercase;
 	text-decoration: none;
+	word-break: keep-all;
 	color: #FFFFFF;
 	margin-left: 13.6px;
 }
@@ -791,6 +889,9 @@ textarea {
 	bottom: 0;
 	right:0;
 }
+.menutoggle{
+	width: 85px;
+}
 
 .active{
 	width: 100%;
@@ -813,6 +914,8 @@ textarea {
 	text-align: Left;
 	color: white;
 }
+
+
 
 .social-media-icons{
 	list-style: none;
@@ -865,18 +968,33 @@ textarea {
 .poster img{
 	width: 516.5px;
 	height: 731.71px;
+	object-fit: cover;
 }
 .overlay{
 	position: absolute;
 	top:0;
 	bottom:0;
 	left:0;
-	right:0;
+	right:0;	
 	background-color: var(--yellow);
 	opacity: 0;
 }
+.overlay.dynamic{
+	opacity: 1;
+}
 .horizontal-scroll figure figcaption,
 .overlay .caption{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 48px;
+	line-height: 53px;
+	padding: 31px 31px 31px 31px;
+	color: white;
+	background-color: rgba(0,0,0,0);
+}
+
+.poster-caption{
 	font-family: Karrik;
 	font-style: normal;
 	font-weight: normal;
@@ -931,34 +1049,12 @@ textarea {
 }
 
 
-/* Content
---------------------------------------------- */
 
-.entry-content figure,
-.entry-content img,
-.entry-content iframe,
-.entry-content table,
-.entry-content {
-	margin: 0;
-	padding: 0;
-}
 
-h1{
-	font-family: Karrik;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 98px;
-	line-height: 87px;
-	color: var(--black);
-	padding: 17px 30px 17px 30px;
-}
-.entry-content p{
-	font-family: Wremena;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 36px;
-	line-height: 108.8%;
-}
+
+  
+
+
 
 /* Day containers
 --------------------------------------------- */
@@ -975,7 +1071,6 @@ h1{
 	font-style: normal;
 	font-weight: 500;
 	font-size: 48px;
-	line-height: 55px;
 	text-transform: capitalize;
 }
 .title{
@@ -985,6 +1080,7 @@ h1{
 	font-size: 98px;
 	line-height: 87px;
 	max-width: 680px;
+
 }
 .key{
 	font-family: Karrik;
@@ -995,9 +1091,65 @@ h1{
 	text-transform: capitalize;
 }
 
+
+
 .event-description{
-	max-width: 600px;
-	margin-bottom: 50px;
+	max-width: 800px;
+}
+
+
+
+.event-name{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 48px;
+	line-height: 48px;
+	margin-bottom: 15px;
+}
+
+
+.event-detail{
+	font-family: Neue Haas Grotesk Display Pro;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 26px;
+	text-transform: capitalize;
+}
+
+.event-detail i {
+	font-style: normal;
+	margin-right: 15px;
+}
+
+.event-detail .dot{
+	font-family: Neue Haas Grotesk Display Pro;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 26px;
+	line-height: 42px;
+	text-decoration: none;
+	margin-right: 15px;
+}
+.livestream-url{
+	text-decoration: underline;
+}
+.active .livestream-url{
+	color: red;
+}
+
+.event-expander{
+	width: 63px;
+	height: 63px;
+}
+
+.hidden{
+	display:none;
+}
+
+.active{
+	background-color: black;
+	color: white;
 }
 
 .program-anchor-menu{
@@ -1017,6 +1169,27 @@ h1{
 	color: #FFFFFF;
 
 }
+/* Artist List
+--------------------------------------------- */
+.entry-content,
+.artist-list{
+	margin-left: 400px;
+	margin-right: 30px;
+}
+.artist-name{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 64px;
+	line-height: 70px;
+	color: black !important;
+
+}
+
+.single-artist h1{
+	max-width: 70%;
+}
+
 
 /* Footer
 --------------------------------------------- */
@@ -1024,6 +1197,7 @@ h1{
 .site-footer{
 	min-height: 776px;
 	background-color: #C4C4C4;
+	z-index: 999999999999999;
 }
 
 #footer-menu li a{
@@ -1053,6 +1227,7 @@ h1{
 	margin-bottom:21px;
 }
 .newsletter-signup{
+	margin-right: 50px;
 	max-width: 410px;
 }
 .newsletter-signup .widget form{
@@ -1069,8 +1244,12 @@ h1{
 	padding:0;
 }
 .newsletter-signup .widget form label input{
-	height: 100%;
-	max-width: 250px;
+	height: 40px;
+	width: 250px;
+	position: relative;
+	top:0;
+	left:0;
+
 	border-radius: 0;
 	margin: 0;
 	padding:0;
@@ -1098,20 +1277,14 @@ h1{
 /* Flag Divider
 --------------------------------------------- */
 
-.graphic-divider-container{
-	position: relative;
-	width: 100%;
-	height: var(--graphic-divider-height);
-	margin-bottom: var(--container-margin-bottom);
-}
-
 .blue{
 	background-color: #48AEE3;
-	height: 50%;
 }
 .green{
 	background-color: #43A05A;
-	height: 50%;
+}
+.white{
+	background-color: white;
 }
 
 
@@ -1141,6 +1314,11 @@ h1{
 	display: inline-block;
 }
 
+/* Campaign Gallery
+--------------------------------------------- */
+
+
+
 /* Captions
 --------------------------------------------- */
 .wp-caption {
@@ -1162,55 +1340,123 @@ h1{
 	text-align: center;
 }
 
-/* Galleries
+/* Mobile
 --------------------------------------------- */
-.gallery {
-	margin-bottom: 1.5em;
-	display: grid;
-	grid-gap: 1.5em;
+
+
+@media screen and (max-width: 60em) {
+
+	.fixed-headline{
+		position: relative;
+	}
+
+	.entry-content,
+	.artist-list{
+		margin-left: 0px;
+	}
+
+
+	.footer-content{
+		margin: 98px 0 198px 0;
+	}
+
+	.flex-change-to-column-reverse{
+		flex-direction: column-reverse;
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+	.newsletter-signup{
+		margin:0;
+		margin-top: 97px;
+		margin-bottom: 146px;
+	
+	}
+
 }
 
-.gallery-item {
-	display: inline-block;
-	text-align: center;
-	width: 100%;
+@media screen and (max-width: 50em) {
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		word-break: break-all;
+	}
+	.headertitle .title{
+		word-break: keep-all;
+	}
+
+	.standard-container{
+		min-height: 60px;
+		padding: 15px 20px 15px 20px;
+	}
+	.menutoggle{
+		width: 48px;
+	}
+
+	.language-menu li{
+		height: 48px;
+		width: 48px;
+		border: 1px solid white;
+	}
+	
+	.language-menu li a{
+		font-family: Karrik;
+		font-size: 18px;
+		font-weight: 100;
+		color: #FFFFFF;
+	}
+
+	.headertitle .title{
+
+		font-size: 20px;
+		line-height: 22px;
+
+	}
+
+
+	#primary-menu li a{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 48px;
+		line-height: 53px;
+	}
+
+	.flex-change-to-column{
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+	.disappear-on-phone{
+		display: none;
+	}
+
+	.newsletter-signup .widget form{
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+
+
+	#footer-menu li {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	#footer-menu li a{
+		margin-right: 30px;
+	}
+
+
+	.footer-icons li{
+		background-position: left;
+	}
 }
 
-.gallery-columns-2 {
-	grid-template-columns: repeat(2, 1fr);
-}
 
-.gallery-columns-3 {
-	grid-template-columns: repeat(3, 1fr);
-}
-
-.gallery-columns-4 {
-	grid-template-columns: repeat(4, 1fr);
-}
-
-.gallery-columns-5 {
-	grid-template-columns: repeat(5, 1fr);
-}
-
-.gallery-columns-6 {
-	grid-template-columns: repeat(6, 1fr);
-}
-
-.gallery-columns-7 {
-	grid-template-columns: repeat(7, 1fr);
-}
-
-.gallery-columns-8 {
-	grid-template-columns: repeat(8, 1fr);
-}
-
-.gallery-columns-9 {
-	grid-template-columns: repeat(9, 1fr);
-}
-
-.gallery-caption {
-	display: block;
-}
 
 /*--------------------------------------------------------------
 # Plugins

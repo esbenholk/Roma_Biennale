@@ -10,16 +10,18 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="large-headline">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
 
 
+		<div class="standard-container">
+            <h1 class="fixed-headline"><?php echo the_title()?></h1>
+        </div>
 
-	<div class="entry-content">
-		<?php
-		the_content();
+        <div class="standard-container blue lowz"></div>
+        <div class="standard-container green lowz"></div>
 
+		<div class="entry-content standard-container event-container">
+			<?php
+			the_content();
 		?>
 	</div><!-- .entry-content -->
 

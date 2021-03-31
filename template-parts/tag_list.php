@@ -102,7 +102,7 @@
         ?> 
 
                     <div class="standard-container flex-column" style="background-color:<?php echo $category -> color[0]?>; color:<?php echo $category -> color2[0]?>;">
-                        <a class="flex-column description" href="../<?php echo $program_page?>#<?php echo $category-> key[0]?>" style="color:<?php echo $category -> color2[0]?>;">
+                        <a class="flex-column description" href="../../<?php echo $program_page?>#<?php echo $category-> key[0]?>" style="color:<?php echo $category -> color2[0]?>;">
 
                               <?php if($category -> date[0]){ ?>
                                   <h4 class="date"><?php echo $date?></h4>

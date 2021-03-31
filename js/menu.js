@@ -7,14 +7,14 @@
     $(".menutoggle").click(function() {
 
 
-        if($('#site-navigation').hasClass("hidden")){
+        if($('#site-navigation').hasClass("unactive")){
 
             $('#site-navigation').addClass("active")
-            $('#site-navigation').removeClass("hidden")
+            $('#site-navigation').removeClass("unactive")
 
         } else if ($('#site-navigation').hasClass("active")){
             
-            $('#site-navigation').addClass("hidden")
+            $('#site-navigation').addClass("unactive")
             $('#site-navigation').removeClass("active")
 
         }
@@ -80,8 +80,23 @@
         lastScrollTop = st;
     }
 
+ 
+    //expanding and collapsing divs
+    $(".event-expander").click(function(event){
 
-
+        $(event.target).parents('.event-container').parents('article').find('.hidden').slideToggle('fast', function(){
+            if($(event.target).parents('.event-container').parents('article').attr("class").includes('active')){
+                $(event.target).parents('.event-container').parents('article').removeClass("active");
+                $(event.target).parents('.event-container').parents('article').find('.primary-expander').attr('src', "/wp-content/themes/Roma_Biennale/icons/Expand.svg");
+    
+            } else{
+                $(event.target).parents('.event-container').parents('article').addClass("active");
+                $(event.target).parents('.event-container').parents('article').find('.primary-expander').attr('src', "/wp-content/themes/Roma_Biennale/icons/Collapse.svg");
+            }
+        });
+        
+       
+    });
 
 
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Program Page
+ *  * Template Name: Campaign Page
  
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -11,9 +11,36 @@
 
 ?>
 
-<?php 
+
+
+
+
     
+<main id="primary" class="site-main">
+    <?php the_title( '<h1 class="large-headline">', '</h1>' ); ?>
+   
+    <div class="standard-container blue"></div>
+    <div class="standard-container green"></div>
+
+    <?php if ( !empty( get_the_content() ) ){
+        ?>
+        <div class="entry-content event-container">
+		    <?php the_content(); ?>
+	    </div><!-- .entry-content -->
+    <?php }
+
+    $program_args = [
+        'post_name__in'      => ['program', 'programm'],
+        'post_type'          => 'page',
+        'ignore_sticky_posts' => 1,
+        'post_status'=>'publish'
+    ];  
+        
+    $the_program_query = new WP_Query( $program_args );
     $categories = [];
+
+    while( $the_program_query->have_posts() ) : $the_program_query->the_post(); 
+ 
 
     $category1=new stdClass();
     $category1->title=get_post_meta($post->ID, 'category1_title', false);
@@ -24,8 +51,7 @@
     $category1->key = get_post_meta($post->ID, 'category1_category_key', false);
     $category1->color = get_post_meta($post->ID, 'category1_color', false);
     $category1->color2 = get_post_meta($post->ID, 'category1_color2', false);
-  
-  
+
     $category2=new stdClass();
     $category2->title=get_post_meta($post->ID, 'category2_title', false);
     $category2->title2=get_post_meta($post->ID, 'category2_title2', false);
@@ -35,8 +61,7 @@
     $category2->key = get_post_meta($post->ID, 'category2_category_key', false);
     $category2->color = get_post_meta($post->ID, 'category2_color', false);
     $category2->color2 = get_post_meta($post->ID, 'category2_color2', false);
-  
-  
+
     $category3=new stdClass();
     $category3->title=get_post_meta($post->ID, 'category3_title', false);
     $category3->title2=get_post_meta($post->ID, 'category3_title2', false);
@@ -46,7 +71,7 @@
     $category3->key = get_post_meta($post->ID, 'category3_category_key', false);
     $category3->color = get_post_meta($post->ID, 'category3_color', false);
     $category3->color2 = get_post_meta($post->ID, 'category3_color2', false);
-  
+
     $category4=new stdClass();
     $category4->title=get_post_meta($post->ID, 'category4_title', false);
     $category4->title2=get_post_meta($post->ID, 'category4_title2', false);
@@ -56,9 +81,7 @@
     $category4->key = get_post_meta($post->ID, 'category4_category_key', false);
     $category4->color = get_post_meta($post->ID, 'category4_color', false);
     $category4->color2 = get_post_meta($post->ID, 'category4_color2', false);
-  
-  
-  
+
     $category5=new stdClass();
     $category5->title=get_post_meta($post->ID, 'category5_title', false);
     $category5->title2=get_post_meta($post->ID, 'category5_title2', false);
@@ -69,102 +92,98 @@
     $category5->color = get_post_meta($post->ID, 'category5_color', false);
     $category5->color2 = get_post_meta($post->ID, 'category5_color2', false);
 
+
     array_push($categories, $category1, $category2, $category3, $category4, $category5);
 
+    endwhile; 
+    
     usort($categories,function($first,$second){
         return $first->date_string > $second->date_string;
     });
-
-?>
-
-
+    ?>
 
     
-<main id="primary" class="site-main">
+    <div class="program-anchor-menu flex-row">
+  
 
-                 <?php the_title( '<h1 class="large-headline">', '</h1>' ); ?>
-
-            
-                <div class="standard-container blue">
-                </div>
-                <div class="standard-container green">
-                </div>
-
-                <div class="program-anchor-menu flex-row">
-                <?php foreach($categories as $category) { 
-                    ?><a href="#<?php echo $category-> key[0]?>"><?php echo $category -> title[0]?></a><?php
-                }?>
-                </div>
-             
-
-    
-                <?php foreach($categories as $category) { 
-                    $args = array (
-                            'post_type' => 'event',
+        <?php foreach($categories as $category) { 
+            $args = array (
+                            'post_type' => 'campaign_day',
                             'category_name' => $category->key[0]      
-                         ); 
-                        
-                    $the_query = new WP_Query($args);
+                    ); 
 
-                    $date = str_replace('-','.',date("j-n-y",  $category -> date_string));
-                    ?> 
+
+            $the_query = new WP_Query($args);
+            if($the_query->have_posts()){
+
+                while( $the_query->have_posts() ) : $the_query->the_post();  
+
+                    ?><a href="#<?php echo $category-> key[0]?>"><?php echo $category -> title[0]?></a><?php
+
+                endwhile; 
+            } 
+        
+        } ?> <!-- //end of foreach loop -->
+
+
+
+
+    </div>
+
+
+    <?php foreach($categories as $category) { 
+            $args = array (
+                    'post_type' => 'campaign_day',
+                    'category_name' => $category->key[0]      
+            ); 
+
+
+            $the_query = new WP_Query($args);
+
+            $date = str_replace('-','.',date("j-n-y",  $category -> date_string)); ?> 
                    
-                    <div id="<?php echo $category-> key[0]?>" class="flex-column" style="background-color: <?php echo esc_attr( $category->color[0])?>; color: <?php echo esc_attr( $category->color2[0])?>">
+
+
+            <div id="<?php echo $category-> key[0]?>" class="flex-column" style="background-color: <?php echo esc_attr( $category->color[0])?>; color: <?php echo esc_attr( $category->color2[0])?>">
                           
-                            <div class="flex-column standard-container description">
-                                    <?php if($category -> date[0]){ ?>
-                                        <h4 class="date"><?php echo $date?></h4>
-                                    <?php }?>
+                <?php if($the_query->have_posts()){ ?>
 
-                                    <h2 class="title"><?php echo $category -> title[0]?></h2>
-
-                                    <?php if($category -> key[0]){ ?>
-                                        <h4 class="key">#<?php echo $category -> key[0]?></h4>
-                                    <?php }?>
-
-                                    <?php if($category -> description[0]){?>
-                                    <div class="event-description">
-                                        <p><?php echo $category -> description[0]?></p>
-                                    </div>
-                                    <?php }?>
-                            </div>
-
-                            <?php if($the_query->have_posts()){ ?>
-
-                                <h1 class="white">Events + Livestreams </h1>
-
-                              
-                            
-                                
-                                <?php while( $the_query->have_posts() ) : $the_query->the_post();  
-
-                                    
-                                            get_template_part( 'template-parts/event-thumbnail-expansion', 'page' );
-
-                                    endwhile; ?>
-
-
-                         
-
+                        <div class="flex-column standard-container description">
+                            <?php if($category -> date[0]){ ?>
+                                <h4 class="date"><?php echo $date?></h4>
                             <?php }?>
+
+                            <h2 class="title"><?php echo $category -> title[0]?></h2>
+
+                            <?php if($category -> key[0]){ ?>
+                                <h4 class="key">#<?php echo $category -> key[0]?></h4>
+                            <?php }?>
+
+                        </div>
+
+
+                        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                        
+                        <div class="campaign-gallery"><?php
+                            echo the_content(); ?>
+                        </div>
+                        
+                        <?php endwhile; ?>
+ 
+                <?php }?>
                    
+            </div> <!-- //.flex-colum -->
+                     
+                
+    <?php } ?> <!-- //end of foreach loop -->
+               
 
-                    
-                
-                     </div> <!-- //.flex-colum -->
-                
-                
-                
-                
-                <?php } ?> <!-- //end of foreach loop -->
-
-     
-
-	
 
 </main><!-- #main -->
 
 
+   
 
-<?php 
+<?php
 get_footer();
+

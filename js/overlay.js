@@ -41,6 +41,20 @@ jQuery(document).ready(function($) {
   });
 
 
+  $(".pic").parent("div").find("a").mouseenter(function(event){
+    console.log("pic", event.target.dataset.caption);
+    if(event.target.dataset.caption.length>0){
+      $(event.target).parent("div").append('<div class="overlay dynamic"><h1 class="poster-caption">'+event.target.dataset.caption+'</h1></div>'); 
+    }
+  })
+
+  $(".pic").parent("div").find("a").mouseleave(function(event){
+
+    console.log($(event.target).parent("div").find(".overlay"));
+    $(event.target).parent("div").find(".overlay").remove(); 
+    
+  })
+
 
 });
 

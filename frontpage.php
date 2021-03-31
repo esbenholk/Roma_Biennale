@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages
+  * Template Name: FrontPage
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -21,7 +21,7 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			get_template_part( 'template-parts/content', 'single' );
+			get_template_part( 'template-parts/content', 'page' );
 
 		endwhile; // End of the loop.
 		?>

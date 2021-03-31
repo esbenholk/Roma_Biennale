@@ -36,59 +36,70 @@
 
 	<header id="masthead" class="standard-container flex-row flex-between nav-down"> <!-- header -->
 
-		<a class="flex-row flex-start headertitle" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-				<img class="logo" src="<?php echo $image[0];?>"/>
-				<div class="flex-column">
-					<h4 class="title"><?php bloginfo( 'description' ); ?></h4>
-					<h4 class="title"><?php bloginfo( 'name' ); ?></h4>
-				</div>
-		</a> 
 
-		<div class="flex-row flex-end">
+
+		<div class="flex-row flex-between flex-2">
+
+			<a class="flex-row flex-start headertitle" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+					<img class="logo" src="<?php echo $image[0];?>"/>
+					<div class="flex-column">
+						<h4 class="title"><?php bloginfo( 'description' ); ?></h4>
+						<h4 class="title"><?php bloginfo( 'name' ); ?></h4>
+					</div>
+			</a> 
+
+
 
 			<?php
 				wp_nav_menu(
 					array(
 						'theme_location' => 'menu-2',
 						'menu_id'        => 'language-menu',
-						'menu_class' => 'language-menu flex-row'
+						'menu_class' => 'language-menu flex-row disappear-on-phone'
 					)
 				);
 			?>
 
-			<img src="/wp-content/themes/Roma_Biennale/icons/menu.svg"id="expander" class="menutoggle" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu" />
 			
 		</div>
+		<img src="/wp-content/themes/Roma_Biennale/icons/menu.svg" id="expander" class="menutoggle" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu" />
+
 	</header><!-- #masthead / header-->
 
 
-	<nav id="site-navigation" class="main-navigation hidden">
+	<nav id="site-navigation" class="main-navigation unactive">
 
 		<div class="standard-container flex-row flex-between"> <!-- header info in menu -->
 
-			<a class="flex-row flex-start headertitle" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img class="logo" src="<?php echo $image[0];?>"/>
-					<div class="flex-column">
-						<h1 class="title"><?php bloginfo( 'description' ); ?></h1>
-						<h1 class="title"><?php bloginfo( 'name' ); ?></h1>
-					</div>
-			</a> 
 
-			<div class="flex-row flex-end">
+				<div class="flex-row flex-between flex-2">
 
-				<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'menu-2',
-							'menu_id'        => 'language-menu',
-							'menu_class' => 'language-menu flex-row'
-						)
-					);
-				?>
+					<a class="flex-row flex-start headertitle disappear-on-phone" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+							<img class="logo" src="<?php echo $image[0];?>"/>
+							<div class="flex-column">
+								<h4 class="title"><?php bloginfo( 'description' ); ?></h4>
+								<h4 class="title"><?php bloginfo( 'name' ); ?></h4>
+							</div>
+					</a> 
+
+
+
+					<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'menu-2',
+								'menu_id'        => 'language-menu',
+								'menu_class' => 'language-menu flex-row'
+							)
+						);
+					?>
+
+
+				</div>
 
 				<img src="/wp-content/themes/Roma_Biennale/icons/close_menu.svg" id="collapser" class="menutoggle" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu" />
 				
-			</div>
+	
 
 		</div><!-- header info in menu -->
 		

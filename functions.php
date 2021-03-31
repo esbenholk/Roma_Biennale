@@ -158,10 +158,14 @@ function roma_biennale_scripts() {
 	wp_enqueue_script( 'roma_biennale-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'roma_biennale-menu-styling', get_template_directory_uri() . '/js/menu.js', array('jquery'), _S_VERSION, true );
 	wp_enqueue_script( 'roma_biennale-overlay', get_template_directory_uri() . '/js/overlay.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'roma_biennale-sm-sharing', get_template_directory_uri() . '/js/webapi.js', array('jquery'), _S_VERSION, true );
+
 
 
 }
 add_action( 'wp_enqueue_scripts', 'roma_biennale_scripts' );
+
+
 
 
 /**
@@ -178,7 +182,6 @@ function artist_register() {
                 'singular_name' => __( 'Artist' )
             ),
             'public' => true,
-			'taxonomies' => array('post_tag'),
             'has_archive' => true,
             'rewrite' => array('slug' => 'artists'),
 			'show_in_rest' => true,
@@ -191,18 +194,19 @@ function artist_register() {
 add_action( 'init', 'artist_register' );
 
 
-function poster_register() {
+function campaign_day_register() {
 
-	register_post_type( 'poster',
+	register_post_type( 'campaign_day',
     // CPT Options
         array(
             'labels' => array(
-                'name' => __( 'posters' ),
-                'singular_name' => __( 'poster' )
+                'name' => __( 'Campaign Days' ),
+                'singular_name' => __( 'Campaign Day' )
             ),
             'public' => true,
-            'has_archive' => true,
-            'rewrite' => array('slug' => 'posters'),
+            'has_archive' => false,
+            'rewrite' => array('slug' => 'campaign'),
+			'taxonomies'  => array( 'category' ),
 			'show_in_rest' => true,
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
 
@@ -210,7 +214,7 @@ function poster_register() {
         )
 	);
 }
-add_action( 'init', 'poster_register' );
+add_action( 'init', 'campaign_day_register' );
 
 
 function event_register() {
@@ -249,6 +253,19 @@ function reg_tag() {
 	register_taxonomy_for_object_type('post_tag', 'poster');
 }
 add_action('init', 'reg_tag');
+
+
+function catch_images() {
+	global $post, $posts;
+	$images = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all('/<img.+?src=[\'"]([^\'"]+)[\'"].*?>/i', $post->post_content, $matches);
+	$images= $matches[0];
+
+	return $images;
+  }
+
 
 // shortcodes for templates on frontpage
 function events_shortcode() { 
@@ -298,6 +315,15 @@ function single_event_shortcode($atts){
 	// register shortcode
 add_shortcode('artists_event', 'single_event_shortcode'); 
 
+
+function graphic_page_divider_shortcode($atts) { 
+	ob_start();
+
+	return '<div class="standard-container" style="background-color:'+ $atts["color"]+'"></div>';
+
+} 
+	// register shortcode
+add_shortcode('graphic_page_divider', 'graphic_page_divider_shortcode'); 
 
 // function that runs when shortcode is called
 function custom_gallery_shortcode() { 
@@ -410,6 +436,9 @@ function program_save_postdata( $post_id ) {
 
 }
 add_action( 'save_post', 'program_save_postdata' );
+
+
+
 
 
 /**
