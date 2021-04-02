@@ -318,8 +318,8 @@ add_shortcode('artists_event', 'single_event_shortcode');
 
 function graphic_page_divider_shortcode($atts) { 
 	ob_start();
-
-	return '<div class="standard-container" style="background-color:'+ $atts["color"]+'"></div>';
+	
+	return '<div class="standard-container turn-thin" style="background-color:'.$atts["color"]. '"></div>';
 
 } 
 	// register shortcode
@@ -361,6 +361,13 @@ function program_add_custom_box() {
 			'roma_trial_event_custom_box_html',
 			'event'
 		);
+
+		add_meta_box(
+			'campaign_colors',
+			'Campaign Day Colors',
+			'roma_trial_campaign_colors_custom_box_html',
+			'campaign_day'
+		);
 		
     }
 
@@ -373,6 +380,10 @@ add_action( 'add_meta_boxes', 'program_add_custom_box' );
 function roma_trial_programming_custom_box_html( $post ) {
 	include plugin_dir_path( __FILE__ ) . './metaforms/program_meta_form.php';
 }
+function roma_trial_campaign_colors_custom_box_html( $post ) {
+	include plugin_dir_path( __FILE__ ) . './metaforms/campaign_day_meta_form.php';
+}
+
 
 function roma_trial_event_custom_box_html( $post ) {
 	include plugin_dir_path( __FILE__ ) . './metaforms/event_meta_form.php';
@@ -435,9 +446,26 @@ function program_save_postdata( $post_id ) {
      }
 
 }
+
 add_action( 'save_post', 'program_save_postdata' );
 
 
+
+
+
+add_filter('wp_nav_menu_items', 'add_social_media_icons', 10, 2);
+function add_social_media_icons($items, $args){
+    if( $args->theme_location == 'menu-1' ){
+        $items .= '<li class="grow-top-on-phone"><a title="SMI" href="https://www.instagram.com/romabiennale/"><svg width="59" height="58" viewBox="0 0 59 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M17.8563 0C8.53037 0 0.944336 7.59305 0.944336 16.9214V41.0881C0.944336 50.414 8.53739 58 17.8657 58H42.0324C51.3583 58 58.9443 50.4069 58.9443 41.0786V16.9119C58.9443 7.58603 51.3513 0 42.0229 0H17.8563ZM46.861 9.66667C48.195 9.66667 49.2777 10.7493 49.2777 12.0833C49.2777 13.4173 48.195 14.5 46.861 14.5C45.527 14.5 44.4443 13.4173 44.4443 12.0833C44.4443 10.7493 45.527 9.66667 46.861 9.66667ZM29.9443 14.5C37.9411 14.5 44.4443 21.0033 44.4443 29C44.4443 36.9967 37.9411 43.5 29.9443 43.5C21.9476 43.5 15.4443 36.9967 15.4443 29C15.4443 21.0033 21.9476 14.5 29.9443 14.5ZM29.9443 19.3333C27.3806 19.3333 24.9218 20.3518 23.109 22.1646C21.2961 23.9775 20.2777 26.4362 20.2777 29C20.2777 31.5638 21.2961 34.0225 23.109 35.8354C24.9218 37.6482 27.3806 38.6667 29.9443 38.6667C32.5081 38.6667 34.9669 37.6482 36.7797 35.8354C38.5926 34.0225 39.611 31.5638 39.611 29C39.611 26.4362 38.5926 23.9775 36.7797 22.1646C34.9669 20.3518 32.5081 19.3333 29.9443 19.3333Z" fill="white"/>
+		</svg></a>
+		<a title="SMI" href="https://www.facebook.com/RomaBiennale/"><svg width="59" height="58" viewBox="0 0 59 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M29.1491 0C13.0508 0 0 13.0508 0 29.1491C0 43.7633 10.7653 55.8297 24.7926 57.9377V36.8749H17.5809V29.2127H24.7926V24.1142C24.7926 15.6729 28.9053 11.967 35.9209 11.967C39.281 11.967 41.0578 12.2161 41.8991 12.3301V19.0184H37.1134C34.1349 19.0184 33.0948 21.8419 33.0948 25.0245V29.2127H41.8236L40.6391 36.8749H33.0948V58C47.3222 56.0695 58.2981 43.9051 58.2981 29.1491C58.2981 13.0508 45.2473 0 29.1491 0Z" fill="white"/>
+		</svg></a>
+		</li>';
+    }
+    return $items;
+}
 
 
 

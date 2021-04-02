@@ -18,7 +18,7 @@ get_header();
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		
-			<div class="standard-container flex-row flex-between">
+			<div class="event-container flex-row flex-between flex-top turn-to-flex-top">
 
 				<h1><?php the_title()?></h1>
 
@@ -29,10 +29,10 @@ get_header();
 		
 			</div>
 
-			<div class="small-standard-container blue lowz"></div>
-        	<div class="small-standard-container green lowz"></div>
+			<div class="small-standard-container blue lowz turn-thin"></div>
+        	<div class="small-standard-container green lowz turn-thin"></div>
 		
-			<div class="entry-content standard-container">
+			<div class="singe-entry-content">
 				<?php the_content(); ?>
 			</div><!-- .entry-content -->
 			

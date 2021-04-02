@@ -7,6 +7,7 @@
 
 jQuery(document).ready(function($) {
 
+  $("#loading").fadeOut()
 
   $("figcaption").click(function(event) {
 
@@ -42,15 +43,22 @@ jQuery(document).ready(function($) {
 
 
   $(".pic").parent("div").find("a").mouseenter(function(event){
-    console.log("pic", event.target.dataset.caption);
+
+    let currentColor = $(event.target).closest(".campaign-gallery").css("background-color");
+
+    if(!currentColor){
+      currentColor = "yellow";
+      currentFontColor = "white"
+    }
+    let currentFontColor = $(event.target).closest(".campaign-gallery").css("color");
+   
     if(event.target.dataset.caption.length>0){
-      $(event.target).parent("div").append('<div class="overlay dynamic"><h1 class="poster-caption">'+event.target.dataset.caption+'</h1></div>'); 
+      $(event.target).parent("div").append('<div class="overlay dynamic" style="background-color:'+currentColor+';"><h1 class="poster-caption" style="color:'+currentFontColor+';">'+event.target.dataset.caption+'</h1></div>'); 
     }
   })
 
   $(".pic").parent("div").find("a").mouseleave(function(event){
 
-    console.log($(event.target).parent("div").find(".overlay"));
     $(event.target).parent("div").find(".overlay").remove(); 
     
   })

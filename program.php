@@ -85,9 +85,9 @@
                  <?php the_title( '<h1 class="large-headline">', '</h1>' ); ?>
 
             
-                <div class="standard-container blue">
+                <div class="standard-container blue turn-thin">
                 </div>
-                <div class="standard-container green">
+                <div class="standard-container green turn-thin">
                 </div>
 
                 <div class="program-anchor-menu flex-row">
@@ -131,7 +131,7 @@
 
                             <?php if($the_query->have_posts()){ ?>
 
-                                <h1 class="white">Events + Livestreams </h1>
+                                <h1 class="white break-word"> Events + Livestreams </h1>
 
                               
                             

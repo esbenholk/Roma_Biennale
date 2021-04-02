@@ -246,6 +246,7 @@ sup {
  */
 img {
 	border-style: none;
+	object-fit: contain;
 	margin: 0;
 	padding: 0;
 }
@@ -465,7 +466,7 @@ input,
 select,
 optgroup,
 textarea {
-	color: #404040;
+	color: black;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -486,7 +487,13 @@ p{
 	font-weight: normal;
 	font-size: 36px;
 	line-height: 108.8%;
+	height: auto;
+	overflow-y: hidden;
 }
+
+
+
+
 
 
 
@@ -690,13 +697,26 @@ h1{
 	line-height: 87px;
 	color: var(--black);
 	padding: 17px 30px 17px 30px;
-
+	margin-left: -2px;
 }
+
+
+
+.event-container h1,
 .standard-container h1{
-	padding: 17px 0px 17px 0px;
+	padding: 0px 0px 0px 0px;
+	
+}
+.fixed-headline{
+	position: fixed;
+	max-width: 380px;
+	z-index: -1;
+	mix-blend-mode: invert;
+	padding-left: 30px;
 }
 
-
+.campaign-gallery p,
+.single-entry-content p,
 .entry-content p{
 	font-family: Wremena;
 	font-style: normal;
@@ -704,7 +724,24 @@ h1{
 	height: auto;
 	font-size: 36px;
 	line-height: 108.8%;
+	padding: 5px 30px 5px 30px;
+	color: black
 }
+
+.singe-entry-content p,
+.singe-entry-content figure,
+.singe-entry-content h1,
+.singe-entry-content h2,
+.singe-entry-content h3,
+.singe-entry-content h4,
+.singe-entry-content h5,
+.singe-entry-content h6,
+.singe-entry-contentiframe{
+	padding-left: 30%;
+	padding-right: 80px;
+	width: 100%;
+}
+
 
 ul,
 li{
@@ -715,11 +752,15 @@ li{
 # Pages
 --------------------------------------------------------------*/
 
-.fixed-headline{
+
+#loading{
 	position: fixed;
-	max-width: 380px;
-	z-index: -1;
-	mix-blend-mode: invert;
+	top:0;
+	bottom:0;
+	right:0;
+	left: 0; 
+	z-index: 99999999999;
+	background-color: var(--yellow);
 }
 
 
@@ -735,13 +776,9 @@ li{
 	flex-wrap: nowrap;
 	align-items: center;
 	height: 0%;
+
 }
-.flex-start{
-	justify-content: flex-start;
-}
-.flex-top{
-	align-items: flex-start;
-}
+
 .flex-wrap{
 	flex-wrap: wrap;
 }
@@ -760,7 +797,12 @@ li{
 	flex-direction: column;
 	justify-content: center;
 }
-
+.flex-start{
+	justify-content: flex-start;
+}
+.flex-top{
+	align-items: flex-start;
+}
 .flex-1{
 	flex-grow: 1;
 }
@@ -791,9 +833,16 @@ li{
 	margin: 0;
 }
 
+.menu-container,
 .standard-container{
 	min-height: var(--standard-container-height);
 	padding: 0px 30px 0px 30px;
+}
+.list-container{
+	min-height: 500px;
+}
+.standard-container.unpadded{
+	padding:0;
 }
 .small-standard-container{
 	min-height: 55.5px;
@@ -836,6 +885,7 @@ li{
 	width: auto;
 }
 .back-button{
+	margin-top: 10px;
 	width: 64px;
 	height: auto;
 	display: inline-block
@@ -888,6 +938,7 @@ li{
 	left: 0;
 	bottom: 0;
 	right:0;
+	overflow-y: scroll;
 }
 .menutoggle{
 	width: 85px;
@@ -898,21 +949,25 @@ li{
 	height: 100%;
 	transform: translate(0,0);
 	transition: .3s ease-in;
-
 }
 
-.menu-container{
-	padding: 20px 30px 120px 30px;
-	height: 100%;
+#primary-menu{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	height: 50vh;
+	padding-bottom: 50px;
 }
 
 #primary-menu li a{
 	font-family: Karrik;
 	font-style: Regular;
 	font-size: 98px;
-	line-height: 108px;
+	line-height: 90px;
 	text-align: Left;
 	color: white;
+	margin-right: 15px;
 }
 
 
@@ -941,13 +996,13 @@ li{
 
 
 .social-media-icons .twitter{
-	background-image: url("/wp-content/themes/roma_biennale/icons/TW.svg");
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/TW.svg");
 }
 .social-media-icons .instagram{
-	background-image: url("/wp-content/themes/roma_biennale/icons/IG.svg");
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/IG.svg");
 }
 .social-media-icons .facebook{
-	background-image: url("/wp-content/themes/roma_biennale/icons/FB.svg");
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/FB.svg");
 }
 
 /* Poster-gallery
@@ -962,12 +1017,12 @@ li{
 
 .poster{
 	position: relative;
-	width: 516.5px;
-	height: 731.71px;
+	width: 370px;
+	height: 525px;
 }
 .poster img{
-	width: 516.5px;
-	height: 731.71px;
+	width: 370px;
+	height: 525px;
 	object-fit: cover;
 }
 .overlay{
@@ -989,7 +1044,7 @@ li{
 	font-weight: normal;
 	font-size: 48px;
 	line-height: 53px;
-	padding: 31px 31px 31px 31px;
+	padding: 5% 5% 5% 5%;
 	color: white;
 	background-color: rgba(0,0,0,0);
 }
@@ -999,9 +1054,10 @@ li{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 48px;
+	word-break: break-word;
 	line-height: 53px;
-	padding: 31px 31px 31px 31px;
-	color: white;
+	padding: 5% 5% 5% 5%;
+	color: inherit;
 
 }
 .overlay:hover{
@@ -1064,7 +1120,7 @@ li{
 }
 .description h2,
 .description h4{
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 .date{
 	font-family: Neue Haas Grotesk Display Pro;
@@ -1093,12 +1149,25 @@ li{
 
 
 
+
 .event-description{
+	padding-top: 20px;
 	max-width: 800px;
+}
+.event-description div{
+	height: auto;
+}
+.event-description figure,
+.event-description img{
+	object-fit: cover;
+	width: 100%;
+
 }
 
 
-
+.event-details{
+	max-width: 80%;
+}
 .event-name{
 	font-family: Karrik;
 	font-style: normal;
@@ -1106,6 +1175,7 @@ li{
 	font-size: 48px;
 	line-height: 48px;
 	margin-bottom: 15px;
+
 }
 
 
@@ -1115,11 +1185,17 @@ li{
 	font-weight: 500;
 	font-size: 26px;
 	text-transform: capitalize;
+	width: auto;
 }
 
 .event-detail i {
 	font-style: normal;
 	margin-right: 15px;
+}
+
+.event-detail i:last-of-type {
+	font-style: normal;
+	margin-right: 30px;
 }
 
 .event-detail .dot{
@@ -1138,7 +1214,10 @@ li{
 	color: red;
 }
 
+
+
 .event-expander{
+	margin-top: 5px;
 	width: 63px;
 	height: 63px;
 }
@@ -1154,7 +1233,7 @@ li{
 
 .program-anchor-menu{
 	background-color: black;
-	flex-wrap: wrap;
+	overflow-x: scroll;
 	padding: 20px 30px 15px 30px
 }
 .program-anchor-menu a{
@@ -1164,17 +1243,16 @@ li{
 	font-size: 24px;
 	line-height: 26px;
 	text-transform: uppercase;
-	padding: 0px 20px 5px 0px;
+	padding: 0px 20px 0px 0px;
 	white-space: nowrap;
 	color: #FFFFFF;
 
 }
 /* Artist List
 --------------------------------------------- */
-.entry-content,
+
 .artist-list{
 	margin-left: 400px;
-	margin-right: 30px;
 }
 .artist-name{
 	font-family: Karrik;
@@ -1215,6 +1293,37 @@ li{
 # Email Signup
 --------------------------------------------------------------*/
 
+
+.newsletter-signup{
+	margin-right: 80px;
+	max-width: 410px;
+}
+.newsletter-signup .widget{
+	margin: 0;
+}
+
+.newsletter-signup .widget section p{
+	background-color: rgba(0,0,0,0);
+	font-size: 12px;
+	padding:0;
+	margin-bottom: 5px;
+	color: black;
+}
+.newsletter-signup .widget section form,
+.newsletter-signup .widget form{
+	display: flex;
+	width: 100%;
+}
+.newsletter-signup .widget section form label,
+.newsletter-signup .widget form label{
+	height: 100%;
+	margin:0;
+
+	padding:0;
+}
+
+.newsletter-signup .widget section form label span,
+.newsletter-signup .widget form label span,
 .newsletter-notice{
 	font-family: Neue Haas Grotesk Display Pro;
 	font-style: normal;
@@ -1226,23 +1335,8 @@ li{
 	color: white;
 	margin-bottom:21px;
 }
-.newsletter-signup{
-	margin-right: 50px;
-	max-width: 410px;
-}
-.newsletter-signup .widget form{
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-	width: 100%;
-	height: 40px;
-}
-.newsletter-signup .widget form label{
-	height: 100%;
-	margin-right: 26px;
-	padding:0;
-}
+
+.newsletter-signup .widget section form label input,
 .newsletter-signup .widget form label input{
 	height: 40px;
 	width: 250px;
@@ -1253,7 +1347,11 @@ li{
 	border-radius: 0;
 	margin: 0;
 	padding:0;
+	margin-right: 21px;
 }
+
+.newsletter-button,
+.newsletter-signup .widget section form label button,
 .newsletter-signup .widget form label button{
 	position: relative;
 	color: white;
@@ -1269,8 +1367,12 @@ li{
 	text-align: center;
 	letter-spacing: 0.08em;
 	width: 138px;
-	max-height: 100%;
+	max-width: 138px !important;
+	max-height: 40px;
 	padding:0;
+	margin: 0  !important;
+	margin-top: 21px !important; 
+	margin-bottom:0;
 }
 
 
@@ -1344,7 +1446,26 @@ li{
 --------------------------------------------- */
 
 
-@media screen and (max-width: 60em) {
+
+
+
+@media screen and (max-width: 64em) {
+
+	.menu-container{
+		overflow-y: scroll;
+	}
+
+	#primary-menu{
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		height: 100%;
+		padding-bottom: 50px;
+	}
+	.grow-top-on-phone{
+		padding-top: 50px;
+	}
 
 	.fixed-headline{
 		position: relative;
@@ -1353,6 +1474,10 @@ li{
 	.entry-content,
 	.artist-list{
 		margin-left: 0px;
+	}
+	.right-aligned{
+		margin-left: 0px;
+		margin-right: 0px;
 	}
 
 
@@ -1365,16 +1490,43 @@ li{
 		justify-content: flex-start;
 		align-items: flex-start;
 	}
+
+
+
+
 	.newsletter-signup{
 		margin:0;
 		margin-top: 97px;
 		margin-bottom: 146px;
 	
 	}
+	.flex-change-to-bottom{
+		align-items: flex-end;
+	}
+
+	.flex-change-to-column{
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+
+	#footer-menu li {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	#footer-menu li a{
+		margin-right: 30px;
+	}
+
+
+	.footer-icons li{
+		background-position: left;
+	}
 
 }
 
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 35em) {
 
 	h1,
 	h2,
@@ -1382,21 +1534,177 @@ li{
 	h4,
 	h5,
 	h6 {
-		word-break: break-all;
+		word-break: normal;
 	}
 	.headertitle .title{
 		word-break: keep-all;
 	}
-
+	body {
+		padding-top: 60px;
+	}
+	
 	.standard-container{
 		min-height: 60px;
-		padding: 15px 20px 15px 20px;
+		padding: 0px 10px 0px 10px;
+	}
+	.menu-container{
+		padding: 90px 20px 90px 20px;
+	}
+
+	.campaign-gallery p,
+	.single-entry-content p,
+	.entry-content p{
+		font-family: Wremena;
+		font-style: normal;
+		font-weight: normal;
+		height: auto;
+		font-size: 36px;
+		line-height: 108.8%;
+		padding: 5px 10px 5px 10px;
+		color: black
+	}
+
+
+	.turn-thin{
+		min-height: 25px;
+		max-height: 25px;
+	}
+	.event-container{
+		padding: 10px 10px 10px 10px;
+	}
+
+	.program-anchor-menu{
+		overflow-x: scroll;
+		padding: 9px 10px 9px 10px;
 	}
 	.menutoggle{
 		width: 48px;
+		margin-right: 5px;
 	}
 
+	.description{
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.description h2,
+	.description h4{
+		margin-bottom: 30px;
+	}
+	.date{
+		font-family: Neue Haas Grotesk Display Pro;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 30px;
+		text-transform: capitalize;
+	}
+	.title{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 72px;
+		line-height: 87px;
+		max-width: 680px;
+
+	}
+	.key{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 36px;
+		line-height: 55px;
+		text-transform: capitalize;
+	} 
+
+	.share-button{
+		margin-left: 0px;
+		margin-top: 15px;
+	}
+
+	.change-width{
+		padding-right: 75px; 
+	}
+	.title{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 64px;
+		line-height: 64px;
+		word-break: break-word;
+	}
+	.break-all{
+		word-break: break-all;
+	}
+	.break-word{
+		word-break: break-word;
+	}
+	.unbreak{
+		white-space: nowrap;
+	}
+	h1{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 64px;
+		line-height: 70px;
+		padding: 0px 10px 0px 10px;
+	}
+	.standard-container h1{
+		padding:0;
+	}
+
+	.event-detail{
+		font-size: 26px;
+		line-height: 32px;
+	}
+
+	.event-detail i {
+		margin-right: 5px;
+	}
+	
+	.event-detail .dot{
+		margin-right: 5px;
+	}
+
+
+	.artist-name{
+		font-size: 35px;
+		line-height: 36px;
+	}
+
+	.entry-content p,
+	p{
+		font-family: Wremena;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 26px;
+	}
+
+	.singe-entry-content p,
+	.singe-entry-content figure,
+	.singe-entry-content h1,
+	.singe-entry-content h2,
+	.singe-entry-content h3,
+	.singe-entry-content h4,
+	.singe-entry-content h5,
+	.singe-entry-content h6,
+	.singe-entry-contentiframe{
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 100%;
+	}
+
+
+
+
+	.list-container{
+		min-height: 500px;
+	}
+
+	
+
 	.language-menu li{
+		margin-top: 10px;
 		height: 48px;
 		width: 48px;
 		border: 1px solid white;
@@ -1425,13 +1733,12 @@ li{
 		line-height: 53px;
 	}
 
-	.flex-change-to-column{
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: flex-start;
-	}
+
 	.disappear-on-phone{
 		display: none;
+	}
+	.turn-to-flex-top{
+		align-items: flex-start;
 	}
 
 	.newsletter-signup .widget form{
@@ -1441,19 +1748,37 @@ li{
 	}
 
 
-	#footer-menu li {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
+
+
+	.poster{
+		position: relative;
+		width: 332px;
+		height: 471px;
 	}
-	#footer-menu li a{
-		margin-right: 30px;
+	.poster img{
+		width: 332px;
+		height: 471px;
+		object-fit: cover;
+	}
+	.horizontal-scroll figure{
+		position: relative;
+		width: auto;
+		height: 100%;
+		min-width: 310px;
+		min-height: 165px;
+	}
+
+	.horizontal-scroll figure figcaption,
+	.overlay .caption{
+
+		font-size: 24px;
+		line-height: 24px;
+		padding: 10px 20px 10px 20px;
+		color: white;
+
 	}
 
 
-	.footer-icons li{
-		background-position: left;
-	}
 }
 
 

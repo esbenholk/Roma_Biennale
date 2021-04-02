@@ -11,9 +11,11 @@
 
             $('#site-navigation').addClass("active")
             $('#site-navigation').removeClass("unactive")
+            console.log("menu goes out");
 
         } else if ($('#site-navigation').hasClass("active")){
             
+            console.log("menu goes in");
             $('#site-navigation').addClass("unactive")
             $('#site-navigation').removeClass("active")
 
@@ -23,15 +25,17 @@
 
     $("#primary-menu").click(function() {
 
-      if($('#site-navigation').hasClass("hidden")){
+      if($('#site-navigation').hasClass("unactive")){
+
+
 
           $('#site-navigation').addClass("active")
-          $('#site-navigation').removeClass("hidden")
+          $('#site-navigation').removeClass("unactive")
 
 
       } else if ($('#site-navigation').hasClass("active")){
           
-          $('#site-navigation').addClass("hidden")
+          $('#site-navigation').addClass("unactive")
           $('#site-navigation').removeClass("active")
 
       }

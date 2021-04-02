@@ -67,6 +67,8 @@
 	</header><!-- #masthead / header-->
 
 
+	<div id="loading"></div>
+
 	<nav id="site-navigation" class="main-navigation unactive">
 
 		<div class="standard-container flex-row flex-between"> <!-- header info in menu -->
@@ -114,14 +116,6 @@
 			);
 			?>
 
-			<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'menu-3',
-							'menu_id'        => 'social-media-icons',
-							'menu_class' => 'social-media-icons flex-row'
-						)
-					);
-			?>
+		
 		</div>
 	</nav><!-- #site-navigation -->

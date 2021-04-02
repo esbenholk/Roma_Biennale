@@ -164,9 +164,9 @@
 
                         <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
                         
-                        <div class="campaign-gallery"><?php
-                            echo the_content(); ?>
-                        </div>
+                            <div class="campaign-gallery" style="background-color: <?php echo esc_attr( $category->color[0])?>; color: <?php echo esc_attr( $category->color2[0])?>"><?php
+                                echo the_content(); ?>
+                            </div>
                         
                         <?php endwhile; ?>
  

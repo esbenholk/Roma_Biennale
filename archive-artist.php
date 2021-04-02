@@ -40,36 +40,21 @@
         
        
 
-        <div class="standard-container">
+        <div class="standard-container flex-row">
             <h1 class="fixed-headline"><?php echo $headline ?></h1>
         </div>
 
-        <div class="standard-container blue lowz"></div>
-        <div class="standard-container green lowz"></div>
+        <div class="standard-container blue lowz turn-thin"></div>
+        <div class="standard-container green lowz turn-thin"></div>
 
-        <div class="list-container">
+        <div class="list-container standard-container artist-list flex-column flex-start">
 
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                    <li class="standard-container event-container flex-column artist-list">
+                
                                 <a class="artist-name" href=<?php the_permalink() ?>>
                                     <?php the_title();  ?>
                                 </a> 
-                                <a class="artist-name" href=<?php the_permalink() ?>>
-                                    <?php the_title();  ?>
-                                </a>    <a class="artist-name" href=<?php the_permalink() ?>>
-                                    <?php the_title();  ?>
-                                </a>    <a class="artist-name" href=<?php the_permalink() ?>>
-                                    <?php the_title();  ?>
-                                </a>    <a class="artist-name" href=<?php the_permalink() ?>>
-                                    <?php the_title();  ?>
-                                </a>    <a class="artist-name" href=<?php the_permalink() ?>>
-                                    <?php the_title();  ?>
-                                </a>    <a class="artist-name" href=<?php the_permalink() ?>>
-                                    <?php the_title();  ?>
-                                </a>    <a class="artist-name" href=<?php the_permalink() ?>>
-                                    <?php the_title();  ?>
-                                </a> 
-                    </li>    
+           
             <?php endwhile; ?>
 
         </div>

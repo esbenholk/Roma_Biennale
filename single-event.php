@@ -41,7 +41,9 @@ get_header('program');
 			
 		endwhile; // End of the loop.
 		?>
+        
 		<h1><?php echo $browse_headline?></h1>
+
 		<?php echo do_shortcode('[important_days]');?>
 
 
