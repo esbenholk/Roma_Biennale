@@ -30,7 +30,7 @@
     <?php }
 
     $program_args = [
-        'post_name__in'      => ['program', 'programm'],
+        'post_name__in'      => ['programme', 'programm'],
         'post_type'          => 'page',
         'ignore_sticky_posts' => 1,
         'post_status'=>'publish'
@@ -148,7 +148,7 @@
                           
                 <?php if($the_query->have_posts()){ ?>
 
-                        <div class="flex-column standard-container description">
+                        <div id="<?php echo $post->ID?>" class="flex-column standard-container description">
                             <?php if($category -> date[0]){ ?>
                                 <h4 class="date"><?php echo $date?></h4>
                             <?php }?>

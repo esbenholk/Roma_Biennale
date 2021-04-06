@@ -1,7 +1,7 @@
 <?php
   
   $args = [
-    'post_name__in'      => ['program', 'programm'],
+    'post_name__in'      => ['programme', 'programm'],
     'post_type'          => 'page',
     'ignore_sticky_posts' => 1,
     'post_status'=>'publish'
@@ -89,7 +89,7 @@
     if (strpos($url, "de") !== false) {
         $program_page = "programm";
     } else {
-        $program_page = "program";
+        $program_page = "programme";
     }
   
   ?>  
@@ -108,7 +108,7 @@
                                   <h4 class="date"><?php echo $date?></h4>
                               <?php }?>
                               
-                              <h2 class="title"><?php echo $category -> title[0]?></h2>
+                              <h4 class="title"><?php echo $category -> title[0]?></h4>
                   
                               <?php if($category -> key[0]){ ?>
                                   <h4 class="key">#<?php echo $category -> key[0]?></h4>

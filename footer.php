@@ -14,7 +14,7 @@
 
 <footer class="site-footer flex-row flex-between standard-container" id="mastfooter">
 		
-		<div class="fullwidth flex-row flex-between flex-baseline flex-change-to-bottom flex-change-to-column footer-content">
+		<div class="fullwidth flex-row flex-between flex-bottom flex-change-to-bottom flex-change-to-column footer-content">
 			<div class="flex-row flex-change-to-column-reverse">
 				<div id="newsletter" class="newsletter-signup">
 					<?php if ( is_active_sidebar( 'newsletter_signup' ) ) : ?>
@@ -42,7 +42,10 @@
 						)
 					);
 			?>
+
 		</div>
+
+
 </footer><!-- #colophon -->
 
 <?php wp_footer(); ?>

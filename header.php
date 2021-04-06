@@ -41,10 +41,11 @@
 		<div class="flex-row flex-between flex-2">
 
 			<a class="flex-row flex-start headertitle" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img class="logo" src="<?php echo $image[0];?>"/>
+					<img class="logo" src="/wp-content/themes/Roma_Biennale/icons/LOGO.svg"/>
+					
 					<div class="flex-column">
-						<h4 class="title"><?php bloginfo( 'description' ); ?></h4>
-						<h4 class="title"><?php bloginfo( 'name' ); ?></h4>
+						<h4 class="headederHeadline"><?php bloginfo( 'description' ); ?></h4>
+						<h4 class="headederHeadline"><?php bloginfo( 'name' ); ?></h4>
 					</div>
 			</a> 
 
@@ -69,9 +70,9 @@
 
 	<div id="loading"></div>
 
-	<nav id="site-navigation" class="main-navigation unactive">
+	<nav id="site-navigation" class="main-navigation unactive flex-column flex-start">
 
-		<div class="standard-container flex-row flex-between"> <!-- header info in menu -->
+		<div class="standard-container flex-row flex-between fullwidth"> <!-- header info in menu -->
 
 
 				<div class="flex-row flex-between flex-2">
@@ -79,8 +80,8 @@
 					<a class="flex-row flex-start headertitle disappear-on-phone" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img class="logo" src="<?php echo $image[0];?>"/>
 							<div class="flex-column">
-								<h4 class="title"><?php bloginfo( 'description' ); ?></h4>
-								<h4 class="title"><?php bloginfo( 'name' ); ?></h4>
+								<h4 class="headederHeadline"><?php bloginfo( 'description' ); ?></h4>
+								<h4 class="headederHeadline"><?php bloginfo( 'name' ); ?></h4>
 							</div>
 					</a> 
 
@@ -105,17 +106,29 @@
 
 		</div><!-- header info in menu -->
 		
-		<div class="menu-container">
-			<?php
+		
+		<div class="menu-container flex-row flex-bottom fullwidth flex-change-to-column"> <!-- header info in menu -->
+		<?php
 			wp_nav_menu(
 				array(
 					'theme_location' => 'menu-1',
 					'menu_id'        => 'primary-menu',
-					'menu_class' => 'list-container foldout-menu'
+					'menu_class' => ''
 				)
 			);
-			?>
+		?>
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'menu-5',
+					'menu_id'        => 'primary-menu-side-wagon',
+					'menu_class' => ''
+				)
+			);
+		?>
+
+		</div>
 
 		
-		</div>
+
 	</nav><!-- #site-navigation -->

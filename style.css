@@ -63,7 +63,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 :root {
 	--black: #131313;
 	--standard-container-height: 113px;
-	--yellow: #FDED4E;
+	--yellow: #fff500;
+
   }
 
 
@@ -82,7 +83,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     src: url('/wp-content/themes/Roma_Biennale/fonts/Neue Haas Grotesk/NeueHaasGrotesk55Roman.ttf') format('ttf'),
 	url('/wp-content/themes/Roma_Biennale/fonts/Neue Haas Grotesk/NeueHaasGrotesk55Roman.woff') format('woff'),
 	url('/wp-content/themes/Roma_Biennale/fonts/Neue Haas Grotesk/NeueHaasGrotesk55Roman.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
@@ -92,7 +93,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     src: url('/wp-content/themes/Roma_Biennale/fonts/Karrik/Karrik-Regular.ttf') format('ttf'),
 	url('/wp-content/themes/Roma_Biennale/fonts/Karrik/Karrik-Regular.woff') format('woff'),
 	url('/wp-content/themes/Roma_Biennale/fonts/Karrik/Karrik-Regular.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
@@ -247,8 +248,15 @@ sup {
 img {
 	border-style: none;
 	object-fit: contain;
+	height: auto;
 	margin: 0;
 	padding: 0;
+}
+figure{
+	height: auto;
+	margin: 0;
+	padding: 0;
+
 }
 
 /* Forms
@@ -450,7 +458,9 @@ html {
 	margin:0;
 	padding:0;
 	list-style: none;
+	box-sizing: border-box;
 }
+
 
 
 
@@ -466,8 +476,8 @@ input,
 select,
 optgroup,
 textarea {
-	color: black;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	color: var(--black);
+	font-family: Karrik;
 	font-size: 1rem;
 	line-height: 1.5;
 }
@@ -587,9 +597,37 @@ img {
 a:-webkit-any-link,
 a{
 	height: auto;
-	text-decoration: inherit;
+	text-decoration: none;
 	color: inherit;
 }
+
+a {
+	outline: none;
+	text-decoration: none;
+	padding: 0;
+  }
+  
+  a:link {
+	color: inherit;
+  }
+  
+  a:visited {
+	color: inherit;
+  }
+  
+  a:focus {
+	border-bottom: 0px solid;
+	background: inherit;
+  }
+  
+  a:hover {
+	border-bottom: 0px solid;
+	background: inherit;
+  }
+  
+  a:active {
+	color: inherit;
+  }
 
 /* Links
 --------------------------------------------- */
@@ -602,7 +640,7 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
+	border: 0px solid;
 	border-color: #ccc #ccc #bbb;
 	border-radius: 3px;
 	background: #e6e6e6;
@@ -646,7 +684,7 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
 	color: #666;
-	border: 1px solid #ccc;
+	border: 0px solid #ccc;
 	border-radius: 3px;
 	padding: 3px;
 }
@@ -671,7 +709,7 @@ textarea:focus {
 }
 
 select {
-	border: 1px solid #ccc;
+	border: 0px solid #ccc;
 }
 
 textarea {
@@ -690,11 +728,11 @@ textarea {
 }
 
 h1{
-	font-family: Karrik;
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 98px;
-	line-height: 87px;
+	line-height: 100%;
 	color: var(--black);
 	padding: 17px 30px 17px 30px;
 	margin-left: -2px;
@@ -708,10 +746,10 @@ h1{
 	
 }
 .fixed-headline{
-	position: fixed;
+	/* position: fixed;
 	max-width: 380px;
 	z-index: -1;
-	mix-blend-mode: invert;
+	mix-blend-mode: invert; */
 	padding-left: 30px;
 }
 
@@ -724,23 +762,12 @@ h1{
 	height: auto;
 	font-size: 36px;
 	line-height: 108.8%;
-	padding: 5px 30px 5px 30px;
-	color: black
+	/* padding: 5px 30px 5px 30px; */
+	color: var(--black)
 }
 
-.singe-entry-content p,
-.singe-entry-content figure,
-.singe-entry-content h1,
-.singe-entry-content h2,
-.singe-entry-content h3,
-.singe-entry-content h4,
-.singe-entry-content h5,
-.singe-entry-content h6,
-.singe-entry-contentiframe{
-	padding-left: 30%;
-	padding-right: 80px;
-	width: 100%;
-}
+
+
 
 
 ul,
@@ -779,6 +806,12 @@ li{
 
 }
 
+.flex-column{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .flex-wrap{
 	flex-wrap: wrap;
 }
@@ -791,12 +824,10 @@ li{
 .flex-bottom{
 	align-items: flex-end;
 }
-
-.flex-column{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+.flex-align-between{
+	justify-content: flex-start
 }
+
 .flex-start{
 	justify-content: flex-start;
 }
@@ -815,6 +846,7 @@ li{
 
 .column-wrap{
 	flex-wrap: wrap;
+	justify-content: flex-end;
 	max-height: 150px;
 }
 .lowz{
@@ -822,18 +854,17 @@ li{
 	z-index: -999;
 }
 
-.cover,
-.cover iframe,
-.cover img{
-	width: 100%;
-	min-height: 100vh;
-	height:auto;
-	object-fit: contain;
-	padding: 0;
-	margin: 0;
-}
 
-.menu-container,
+
+
+
+
+  
+
+
+
+
+
 .standard-container{
 	min-height: var(--standard-container-height);
 	padding: 0px 30px 0px 30px;
@@ -891,8 +922,8 @@ li{
 	display: inline-block
 }
 
-.headertitle .title{
-	font-family: Karrik;
+.headederHeadline{
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 26px;
@@ -900,6 +931,7 @@ li{
 	text-transform: uppercase;
 	text-decoration: none;
 	word-break: keep-all;
+	white-space: nowrap;
 	color: #FFFFFF;
 	margin-left: 13.6px;
 }
@@ -907,7 +939,7 @@ li{
 	margin-right: 30px;
 }
 .language-menu li{
-	border: 2px solid white;
+	border: 1.55px solid white;
 	border-radius: 50%;
 	height: 53px;
 	width: 53px;
@@ -918,10 +950,11 @@ li{
 }
 
 .language-menu li a{
-	font-family: Karrik;
+	font-family: 'Neue Haas Grotesk Display Pro';
 	font-size: 26px;
+	line-height: 26px;
 	font-weight: 100;
-	color: #FFFFFF;
+	color:white;
 }
 
 
@@ -938,6 +971,7 @@ li{
 	left: 0;
 	bottom: 0;
 	right:0;
+	height: 100%;
 	overflow-y: scroll;
 }
 .menutoggle{
@@ -951,23 +985,35 @@ li{
 	transition: .3s ease-in;
 }
 
+.menu-container{
+	padding: 0px 30px 90px 30px;
+	height: auto;
+	width: 100%;
+}
+.menu-container ul{
+	height: auto;
+	flex: 1;
+	display: inline-block;
+
+}
 #primary-menu{
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: flex-end;
-	height: 50vh;
-	padding-bottom: 50px;
+	margin-right: 80px;
+}
+#primary-menu-side-wagon li,
+#primary-menu li{
+	margin-top: 15px;
+	flex: none;
 }
 
+#primary-menu-side-wagon li a,
 #primary-menu li a{
-	font-family: Karrik;
-	font-style: Regular;
-	font-size: 98px;
-	line-height: 90px;
+	font-size: 84px;
+	line-height: 82px;
+	max-height: 113px;
 	text-align: Left;
 	color: white;
 	margin-right: 15px;
+
 }
 
 
@@ -980,18 +1026,33 @@ li{
 	display: flex;
 	flex-direction: row;
 }
+
+.social-media-icons-li a,
 .social-media-icons li{
 	height: 40px;
-	width: 71px;
+	width: auto;
+	min-width: 40px;
 	background-position: left;
 	background-repeat: no-repeat;
 	background-size: contain;
+	position: relative;
+}
+
+.social-media-icons li a,
+.social-media-icons-li a svg{
+	height: 40px;
+	width: auto;
+	min-width: 40px;
 }
 .footer-icons li{
 	background-position: right;
+	margin-left: 15px;
 }
 .social-media-icons li a{
-	color: rgba(0,0,0,0)
+	position: absolute;
+	color: rgba(255,0,0,0);
+	height: 100%;
+	width: 100%;
 }
 
 
@@ -1004,9 +1065,39 @@ li{
 .social-media-icons .facebook{
 	background-image: url("/wp-content/themes/Roma_Biennale/icons/FB.svg");
 }
+.social-media-icons .youtube{
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/Youtube.svg");
+}
 
 /* Poster-gallery
 --------------------------------------------- */
+
+
+.wp-block-columns:first-child{
+	margin-top: 40px;
+}
+.wp-block-column{
+	margin: 0;
+	padding:0;
+}
+
+.wp-block-column h4,
+.wp-block-column h3,
+.wp-block-column h2,
+.wp-block-column h1{
+	margin: 0;
+	padding:0;
+}
+
+.entry-content p:last-child,
+.singe-entry-content p:last-child{
+	margin-bottom: 40px;
+}
+.wp-block-columns{
+	padding: 0px 30px 0px 30px;
+}
+
+
 
 .entry-content{
 	overflow-x: hidden;
@@ -1037,9 +1128,11 @@ li{
 .overlay.dynamic{
 	opacity: 1;
 }
+
+.takes-overlay figcaption,
 .horizontal-scroll figure figcaption,
 .overlay .caption{
-	font-family: Karrik;
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 48px;
@@ -1047,10 +1140,13 @@ li{
 	padding: 5% 5% 5% 5%;
 	color: white;
 	background-color: rgba(0,0,0,0);
+	word-break: break-word;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 .poster-caption{
-	font-family: Karrik;
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 48px;
@@ -1070,6 +1166,14 @@ li{
 	width: 100%;
 	overflow-x: scroll;
 	overflow-y: hidden;
+	padding: 0;
+	margin:0;
+}
+
+
+.horizontal-scroll .wp-block-columns{
+	padding: 0;
+	margin:0;
 }
 
 
@@ -1103,12 +1207,56 @@ li{
 .horizontal-scroll figure figcaption:hover{
 	opacity: 1; 
 }
+figure{
+	height: auto;
+}
 
 
 
 
+.cover,
+.cover iframe,
+.cover img{
+	width: 100%;
+	min-height: 100vh;
+	height:auto;
+	object-fit: contain;
+	position: relative;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
 
-  
+.takes-overlay{
+	position: relative;
+}
+.takes-overlay div{
+	height: 100%;
+}
+
+/* .takes-overlay iframe{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+
+} */
+
+.takes-overlay figcaption{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin:0 !important;
+	background-color: var(--yellow);
+	width: auto;
+	opacity: 0; 
+	pointer-events: auto; 
+}
+
+.takes-overlay figcaption:hover{
+	opacity: 1; 
+}
 
 
 
@@ -1116,34 +1264,35 @@ li{
 --------------------------------------------- */
 .description{
 	padding-top: 60px;
-	padding-bottom: 40px;
+	padding-bottom: 60px;
 }
-.description h2,
-.description h4{
-	margin-bottom: 40px;
-}
+
+
 .date{
 	font-family: Neue Haas Grotesk Display Pro;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 48px;
+	line-height: 48px;
 	text-transform: capitalize;
+	margin-bottom: 40px;
 }
+
 .title{
-	font-family: Karrik;
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 98px;
 	line-height: 87px;
 	max-width: 680px;
+	margin-bottom: 40px;
 
 }
 .key{
-	font-family: Karrik;
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: 500;
 	font-size: 48px;
-	line-height: 55px;
 	text-transform: capitalize;
 }
 
@@ -1167,9 +1316,10 @@ li{
 
 .event-details{
 	max-width: 80%;
+
 }
 .event-name{
-	font-family: Karrik;
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 48px;
@@ -1186,6 +1336,11 @@ li{
 	font-size: 26px;
 	text-transform: capitalize;
 	width: auto;
+	margin:0;
+}
+.event-thumbnail:hover{
+	background-color: var(--black);
+	color: white;
 }
 
 .event-detail i {
@@ -1195,7 +1350,6 @@ li{
 
 .event-detail i:last-of-type {
 	font-style: normal;
-	margin-right: 30px;
 }
 
 .event-detail .dot{
@@ -1227,23 +1381,23 @@ li{
 }
 
 .active{
-	background-color: black;
+	background-color: var(--black);
 	color: white;
 }
 
 .program-anchor-menu{
-	background-color: black;
+	background-color: var(--black);
 	overflow-x: scroll;
 	padding: 20px 30px 15px 30px
 }
 .program-anchor-menu a{
-	font-family: Karrik;
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 24px;
 	line-height: 26px;
 	text-transform: uppercase;
-	padding: 0px 20px 0px 0px;
+	padding: 0px 30px 0px 0px;
 	white-space: nowrap;
 	color: #FFFFFF;
 
@@ -1252,20 +1406,21 @@ li{
 --------------------------------------------- */
 
 .artist-list{
+	margin-top: 40px;
 	margin-left: 400px;
 }
 .artist-name{
-	font-family: Karrik;
+	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 64px;
 	line-height: 70px;
-	color: black !important;
+	color: var(--black) !important;
 
 }
 
 .single-artist h1{
-	max-width: 70%;
+	max-width: 80%;
 }
 
 
@@ -1273,7 +1428,7 @@ li{
 --------------------------------------------- */
 
 .site-footer{
-	min-height: 776px;
+	min-height: 400px;
 	background-color: #C4C4C4;
 	z-index: 999999999999999;
 }
@@ -1307,18 +1462,18 @@ li{
 	font-size: 12px;
 	padding:0;
 	margin-bottom: 5px;
-	color: black;
+	color: var(--black);
 }
 .newsletter-signup .widget section form,
 .newsletter-signup .widget form{
 	display: flex;
+	align-items: flex-end;
 	width: 100%;
 }
 .newsletter-signup .widget section form label,
 .newsletter-signup .widget form label{
 	height: 100%;
 	margin:0;
-
 	padding:0;
 }
 
@@ -1343,7 +1498,7 @@ li{
 	position: relative;
 	top:0;
 	left:0;
-
+	border: 0px solid rgba(0,0,0,0);
 	border-radius: 0;
 	margin: 0;
 	padding:0;
@@ -1416,8 +1571,13 @@ li{
 	display: inline-block;
 }
 
-/* Campaign Gallery
+/* Details
 --------------------------------------------- */
+
+.share-button{
+	margin-left: 30px;
+}
+.slider
 
 
 
@@ -1451,18 +1611,10 @@ li{
 
 @media screen and (max-width: 64em) {
 
-	.menu-container{
-		overflow-y: scroll;
+	#primary-menu li{
+		margin-top: 10px;
 	}
-
-	#primary-menu{
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		justify-content: flex-end;
-		height: 100%;
-		padding-bottom: 50px;
-	}
+	
 	.grow-top-on-phone{
 		padding-top: 50px;
 	}
@@ -1482,7 +1634,7 @@ li{
 
 
 	.footer-content{
-		margin: 98px 0 198px 0;
+		margin: 108px 0 108px 0;
 	}
 
 	.flex-change-to-column-reverse{
@@ -1491,6 +1643,10 @@ li{
 		align-items: flex-start;
 	}
 
+	.title{
+		max-width: 100%;
+		word-break: break-all;
+	}
 
 
 
@@ -1509,6 +1665,16 @@ li{
 		justify-content: flex-start;
 		align-items: flex-start;
 	}
+	.wp-block-column{
+		margin:0 !important;
+		margin-left: 0;
+		margin-bottom: 40px;
+	}
+	.horizontal-scroll{
+		margin:0;
+		padding:0;
+	}
+
 
 	#footer-menu li {
 		width: 100%;
@@ -1522,11 +1688,14 @@ li{
 
 	.footer-icons li{
 		background-position: left;
+		margin-left: 0px;
+		margin-right: 15px;
 	}
+
 
 }
 
-@media screen and (max-width: 35em) {
+@media screen and (max-width: 40em) {
 
 	h1,
 	h2,
@@ -1536,19 +1705,33 @@ li{
 	h6 {
 		word-break: normal;
 	}
-	.headertitle .title{
+	.headederHeadline{
 		word-break: keep-all;
+		white-space: nowrap;
+	}
+
+	.logo{
+		height: 38px;
+		width: auto;
 	}
 	body {
 		padding-top: 60px;
+	}
+	.wp-block-columns{
+		padding: 0px 10px 0px 10px;
 	}
 	
 	.standard-container{
 		min-height: 60px;
 		padding: 0px 10px 0px 10px;
 	}
+
+	.horizontal-scroll{
+		padding: 0;
+		padding: 0px 0px 0px 0px;
+	}
 	.menu-container{
-		padding: 90px 20px 90px 20px;
+		padding: 50px 20px 90px 20px;
 	}
 
 	.campaign-gallery p,
@@ -1561,7 +1744,17 @@ li{
 		font-size: 36px;
 		line-height: 108.8%;
 		padding: 5px 10px 5px 10px;
-		color: black
+		color: var(--black)
+	}
+	.entry-content h2{
+		font-family: 'Karrik';
+		font-style: normal;
+		font-weight: normal;
+		height: auto;
+		font-size: 36px;
+		line-height: 108.8%;
+		padding: 5px 10px 5px 10px;
+		color: var(--black)
 	}
 
 
@@ -1572,63 +1765,66 @@ li{
 	.event-container{
 		padding: 10px 10px 10px 10px;
 	}
+	.menutoggle{
+		width: 48px;
+		margin-right: 5px;
+	}
+	#collapser{
+		margin-top: 5px;
+		height: auto;
+		width: 43px;
+	}
 
 	.program-anchor-menu{
 		overflow-x: scroll;
 		padding: 9px 10px 9px 10px;
 	}
-	.menutoggle{
-		width: 48px;
-		margin-right: 5px;
-	}
+
 
 	.description{
-		padding-top: 20px;
-		padding-bottom: 20px;
+		padding-top: 40px;
+		padding-bottom: 40px;
 	}
-	.description h2,
-	.description h4{
-		margin-bottom: 30px;
-	}
+
 	.date{
 		font-family: Neue Haas Grotesk Display Pro;
 		font-style: normal;
 		font-weight: 500;
 		font-size: 30px;
+		line-height: 30px;
+		margin-bottom: 20px;
 		text-transform: capitalize;
 	}
 	.title{
-		font-family: Karrik;
+		font-family: 'Karrik';
 		font-style: normal;
 		font-weight: normal;
 		font-size: 72px;
 		line-height: 87px;
-		max-width: 680px;
-
+		margin-bottom: 20px;
 	}
 	.key{
-		font-family: Karrik;
+		font-family: 'Karrik';
 		font-style: normal;
 		font-weight: 500;
 		font-size: 36px;
-		line-height: 55px;
+		line-height: 35px;
 		text-transform: capitalize;
 	} 
-
-	.share-button{
-		margin-left: 0px;
-		margin-top: 15px;
+	.event-detail{
+		margin-bottom:0;
 	}
+
 
 	.change-width{
-		padding-right: 75px; 
+		padding-right: 0px; 
 	}
 	.title{
-		font-family: Karrik;
+		font-family: 'Karrik';
 		font-style: normal;
 		font-weight: normal;
 		font-size: 64px;
-		line-height: 64px;
+		line-height: 100%;
 		word-break: break-word;
 	}
 	.break-all{
@@ -1641,12 +1837,12 @@ li{
 		white-space: nowrap;
 	}
 	h1{
-		font-family: Karrik;
+		font-family: 'Karrik';
 		font-style: normal;
 		font-weight: normal;
 		font-size: 64px;
-		line-height: 70px;
-		padding: 0px 10px 0px 10px;
+		line-height: 100%;
+		padding: 10px 10px 10px 10px;
 	}
 	.standard-container h1{
 		padding:0;
@@ -1657,6 +1853,8 @@ li{
 		line-height: 32px;
 	}
 
+
+
 	.event-detail i {
 		margin-right: 5px;
 	}
@@ -1664,6 +1862,7 @@ li{
 	.event-detail .dot{
 		margin-right: 5px;
 	}
+
 
 
 	.artist-name{
@@ -1680,25 +1879,39 @@ li{
 		line-height: 26px;
 	}
 
-	.singe-entry-content p,
-	.singe-entry-content figure,
-	.singe-entry-content h1,
-	.singe-entry-content h2,
-	.singe-entry-content h3,
-	.singe-entry-content h4,
-	.singe-entry-content h5,
-	.singe-entry-content h6,
-	.singe-entry-contentiframe{
-		padding-left: 10px;
-		padding-right: 10px;
-		width: 100%;
+	.entry-content h2{
+		font-family: 'Karrik';
+		font-style: normal;
+		font-weight: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 26px;
+		color: var(--black)
 	}
+
+	.newsletter-button,
+	.newsletter-signup .widget section form label button,
+	.newsletter-signup .widget form label button{
+
+		height: 42px;
+		max-height: 42px;
+
+	}
+
+
 
 
 
 
 	.list-container{
 		min-height: 500px;
+	}
+
+
+	.social-media-icons-li a svg{
+			height: 44px;
+			width: auto;
+			min-width: 40px;
 	}
 
 	
@@ -1711,26 +1924,26 @@ li{
 	}
 	
 	.language-menu li a{
-		font-family: Karrik;
-		font-size: 18px;
+		font-family: 'Karrik';
+		font-size: 24px;
 		font-weight: 100;
 		color: #FFFFFF;
 	}
 
-	.headertitle .title{
-
+	.headederHeadline{
 		font-size: 20px;
-		line-height: 22px;
-
+		line-height: 17px;
 	}
 
 
+	#primary-menu-side-wagon li a,
 	#primary-menu li a{
-		font-family: Karrik;
-		font-style: normal;
-		font-weight: normal;
 		font-size: 48px;
 		line-height: 53px;
+		font-weight: 400;
+	}
+	#primary-menu{
+		margin-right: 0px;
 	}
 
 
@@ -1741,6 +1954,7 @@ li{
 		align-items: flex-start;
 	}
 
+	.newsletter-signup .widget section form,
 	.newsletter-signup .widget form{
 		flex-direction: column;
 		justify-content: flex-start;
@@ -1760,6 +1974,11 @@ li{
 		height: 471px;
 		object-fit: cover;
 	}
+
+	.overlay:hover{
+		opacity: 0;
+	}
+
 	.horizontal-scroll figure{
 		position: relative;
 		width: auto;

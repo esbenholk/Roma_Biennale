@@ -23,7 +23,7 @@
       
     });
 
-    $("#primary-menu").click(function() {
+    $('#primary-menu').click(function() {
 
       if($('#site-navigation').hasClass("unactive")){
 
@@ -41,6 +41,25 @@
       }
       
     });
+
+    $('#primary-menu-side-wagon').click(function() {
+
+        if($('#site-navigation').hasClass("unactive")){
+  
+  
+  
+            $('#site-navigation').addClass("active")
+            $('#site-navigation').removeClass("unactive")
+  
+  
+        } else if ($('#site-navigation').hasClass("active")){
+            
+            $('#site-navigation').addClass("unactive")
+            $('#site-navigation').removeClass("active")
+  
+        }
+        
+      });
 
 
     // Hide Header on on scroll down

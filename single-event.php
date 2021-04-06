@@ -25,7 +25,7 @@ get_header('program');
     if (strpos($url, "de") !== false) {
         $browse_headline = "Browse Programm";
     } else {
-        $browse_headline = "Browse Program";
+        $browse_headline = "Browse Programme";
     }
   
 ?>  

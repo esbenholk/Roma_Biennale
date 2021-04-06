@@ -12,10 +12,11 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 
-		<div class="standard-container no-padding">
+		<div class="standard-container flex-row">
             <h1 class="fixed-headline"><?php echo the_title()?></h1>
         </div>
 
+		
         <div class="standard-container blue lowz turn-thin"></div>
         <div class="standard-container green lowz turn-thin"></div>
 

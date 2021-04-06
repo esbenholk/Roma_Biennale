@@ -47,7 +47,7 @@ jQuery(document).ready(function($) {
     let currentColor = $(event.target).closest(".campaign-gallery").css("background-color");
 
     if(!currentColor){
-      currentColor = "yellow";
+      currentColor = "#fff500";
       currentFontColor = "white"
     }
     let currentFontColor = $(event.target).closest(".campaign-gallery").css("color");
