@@ -31,9 +31,10 @@ function myComparison($a, $b){
 
 usort ( $tags, 'myComparison' );
 
-$html_tags = '<div class="post_tags flex-column"><p>Tags:</p>';
+$html_tags = '<div class="post_tags flex-column disappear-on-phone"> <p>Check out other tags:</p>';
 foreach ( $tags as $tag ) {
     $tag_link = get_tag_link( $tag->term_id );
+
     $html_tags .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
     $html_tags .= "{$tag->name}</a>";
 }
@@ -43,33 +44,39 @@ $html_tags .= '</div>';
 
 
 
+
 ?>
 
 	<main id="primary" class="site-main">
 
+
 		<?php
 		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
 				?>
 				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+					<h1 class="page-title screen-reader-text"><?php single_tag_title(); ?></h1>
 				</header>
-				<?php
-			endif;?>
+		
+		
 
 			<div class="standard-container blue lowz turn-thin"></div>
 			<div class="standard-container green lowz turn-thin"></div>
 
 
 			<div class="wp-block-columns flex-change-to-column blogs-container">
-				<div class="wp-block-column" style="flex-basis:35%">
+				<div class="wp-block-column flex-column flex-start" style="flex-basis:35%">
 
+					<?php while ( have_posts() ) :
+					the_post();
+
+					
+						the_title( '<a class="tag-name" href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a>' );
+					
+
+					endwhile; ?>	
+				
 
 					<?php echo $html_tags; ?>
-					
-					
-				
 				</div>
 				<div class="wp-block-column" style="flex-basis:60%">
 					<?php while ( have_posts() ) :

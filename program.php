@@ -75,6 +75,7 @@
         return $first->date_string > $second->date_string;
     });
 
+    $current_date = time();
 ?>
 
 
@@ -91,9 +92,9 @@
                 </div>
 
                 <div class="program-anchor-menu flex-row">
-                <?php foreach($categories as $category) { 
-                    ?><a href="#<?php echo $category-> key[0]?>"><?php echo $category -> title[0]?></a><?php
-                }?>
+                    <?php foreach($categories as $category) { 
+                        ?><a href="#<?php echo $category-> key[0]?>"><?php echo $category -> title[0]?></a><?php
+                    }?>
                 </div>
              
 
@@ -101,7 +102,7 @@
                 <?php foreach($categories as $category) { 
                     $args = array (
                             'post_type' => 'event',
-                            'category_name' => $category->key[0]      
+                            'category_name' => $category->key[0]     
                          ); 
                         
                     $the_query = new WP_Query($args);
@@ -133,19 +134,13 @@
 
                                 <h1 class="white break-word"> Events + Livestreams </h1>
 
-                              
-                            
-                                
                                 <?php while( $the_query->have_posts() ) : $the_query->the_post();  
 
                                     
                                             get_template_part( 'template-parts/event-thumbnail-expansion', 'page' );
 
                                     endwhile; ?>
-
-
-                         
-
+                                    
                             <?php }?>
                    
 

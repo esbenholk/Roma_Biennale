@@ -37,9 +37,6 @@
 
 	<main id="primary" class="site-main">
 
-        
-       
-
         <div class="standard-container flex-row">
             <h1 class="fixed-headline"><?php echo $headline ?></h1>
         </div>

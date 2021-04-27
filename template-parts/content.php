@@ -37,6 +37,6 @@
 
 		?>
 	</div><!-- .entry-content -->
-	<p><?php the_tags(); ?></p>
+	
 
 </article><!-- #post-<?php the_ID(); ?> -->
