@@ -57,10 +57,6 @@
 				<div class="wp-block-column" style="flex-basis:60%">
 
 
-              
-
-              
-
                     <div class="entry-content">
                         <?php
                         

@@ -34,12 +34,16 @@
     }
 
     $year = get_the_date('Y');
-    $thumbnail_extra = catch_image();  
+    $thumbnail_extra = catch_image();
+
+    $artist=new stdClass();
+    $artist->title=get_post_meta($post->ID, 'artist_title', false);
+
 ?>  
 
 <article class="blog-item" id="post-<?php $year ?>" <?php post_class(); ?>>
 
-    <div class="blog-headline <?php echo $year ?>">
+    <div class="blog-headline flex-row flex-start flex-wrap <?php echo $year ?>">
         
         <?php
             if ( is_singular() ) :
@@ -48,30 +52,36 @@
                 the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
             endif;
 
-        ?>
+            if($artist->title){?>
+                <h2 class="headline-title"> <?php echo $artist->title[0] ?></h2>
+            <?php } ?>
 
-        <p><?php echo $posted_on_string?> <?php the_date('')?> <?php echo $by_string?> <?php the_author()?></p>
     </div>
     
 
-
+  
     <?php if ( get_the_post_thumbnail(get_the_ID()) != '' ) {
 
-            echo '<a href="'; the_permalink(); echo '" class="thumbnail-wrapper">';
-            the_post_thumbnail();
-            echo '</a>';
+        echo '<a href="'; the_permalink(); echo '" class="thumbnail-wrapper">';
+        the_post_thumbnail();
+        echo '</a>';
 
-            } else {
+        } else {
 
-            ?> <img src="<?php echo $thumbnail_extra;?>"/><?php
+        ?> <img src="<?php echo $thumbnail_extra;?>"/><?php
 
     }?>
 
+
+
+
 	<div class="entry-content">
 		<?php the_excerpt(); ?>
-        <img class="go-arrow" src="/wp-content/themes/Roma_Biennale/icons/left-arrow.svg"/>
 
-        <a class="read-more" href="<?php the_permalink() ?>"><?php echo $continue_string?></a>
+        <a class="read-more" href="<?php the_permalink() ?>">
+             <img class="go-arrow" src="/wp-content/themes/Roma_Biennale/icons/left-arrow.svg"/>
+            <?php echo $continue_string?>
+        </a>
 	</div><!-- .entry-content -->
 
     <div class="string"></div>

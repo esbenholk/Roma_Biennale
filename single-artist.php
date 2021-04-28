@@ -12,21 +12,116 @@
  * @package Roma_Biennale
  */
 
-get_header();
+	get_header();
+
+    $args = array (
+		'post_type' => 'Artist',
+		'orderby' => 'title',
+		'order'   => 'ASC',
+		'meta_query' => array(
+			array(
+				'relation' => 'OR',
+				array(
+					'key' => 'artist_title',
+					'compare' => '=',
+					'value' => ''
+				),
+				array(
+					'key' => 'artist_title',
+					'compare' => 'NOT EXISTS',
+				),
+			)
+		)
+	); // gets Artists
+	$the_query = new WP_Query($args);
+	
+    $args_with_title = array (
+        'post_type' => 'Artist',
+        'orderby' => 'title',
+        'order'   => 'ASC',
+        'meta_query' => array(
+            array(
+                'key' => 'artist_title',
+                'compare' => '!=',
+                'value' => ''
+            )
+        )
+    ); // gets Artists With Titles
+	$the_query_with_title = new WP_Query($args_with_title );
+	
+	if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+		$url = "https://";   
+	else  
+		$url = "http://";   
+		// Append the host(domain name, ip) to the URL.   
+		$url.= $_SERVER['HTTP_HOST'];   
+	
+		// Append the requested resource location to the URL   
+		$url.= $_SERVER['REQUEST_URI'];    
+		
+	
+	if (strpos($url, "de") !== false) {
+		$headline = "Künstler/-innen";
+		$artist_list_headline = "Künstler/-innen AZ";
+		} else {
+		$headline = "Artists";
+		$artist_list_headline = "Artists AZ";
+	}
 ?>
 
 	<main id="primary" class="site-main">
+		<a href="javascript:history.go(-1)"><img class="back-arrow  hidden appear-on-phone" src="/wp-content/themes/Roma_Biennale/icons/left-arrow.svg"/></a>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+		<div class="wp-block-columns flex-change-to-column-reverse blogs-container">
+				<div class="wp-block-column" style="flex-basis:35%">
+					<div class="artist-names flex-column flex-start">
+						<p class="artist-name artist-names-headline"> <?php echo $artist_list_headline?></p>
+						<?php while( $the_query_with_title->have_posts() ) : $the_query_with_title->the_post(); ?>
+							<?php $artist_title=get_post_meta($post->ID, 'artist_title', false); ?>
 
-			get_template_part( 'template-parts/content', 'artist' );
+							<a class="artist-name" href=<?php the_permalink() ?>>
+								<?php the_title();  ?> <u><?php echo $artist_title[0]?></u>
+							</a> 
+						<?php endwhile; ?>
+						<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+							<a class="artist-name" href=<?php the_permalink() ?>>
+								<?php the_title();  ?>
+							</a> 
+						<?php endwhile; ?>
+                	</div>
 
-		endwhile; // End of the loop.
-		?>
+					
+				</div>
+				<div class="wp-block-column" style="flex-basis:60%">
+
+
+				<?php
+						while ( have_posts() ) :
+							the_post(); ?>
+					
+							<div class="entry-content">
+									<?php
+									
+									get_template_part( 'template-parts/artist-full', get_post_type() );
+									
+
+									?>
+							</div><!-- .entry-content -->
+
+						<?php endwhile; // End of the loop.
+						?>
+			
+					
+				
+				</div>
+				
+			</div>
+
 
 	</main><!-- #main -->
+
+
+	
 
 <?php
 get_footer();

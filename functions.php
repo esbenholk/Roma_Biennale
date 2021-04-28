@@ -256,15 +256,24 @@ function reg_tag() {
 add_action('init', 'reg_tag');
 
 
-function catch_images() {
+function catch_image() {
 	global $post, $posts;
-	$images = '';
+	$first_img = '';
 	ob_start();
 	ob_end_clean();
+	
 	$output = preg_match_all('/<img.+?src=[\'"]([^\'"]+)[\'"].*?>/i', $post->post_content, $matches);
-	$images= $matches[0];
+	if($matches[0]){
+		$first_img= $matches[1][0];;
+	}
 
-	return $images;
+	if(empty($first_img)) {
+		$first_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MtcnVHreN4e_-k7JGuwyvg5hNVjPNr_Kndv84WVt3LiRYWo4LJnK-hxnuSPHfQaMDvE&usqp=CAU";
+	}
+	
+	return $first_img;
+	
+
   }
 
 
@@ -292,6 +301,7 @@ function tag_list_shortcode() {
 } 
 	// register shortcode
 add_shortcode('important_days', 'tag_list_shortcode'); 
+
 
 function single_event_shortcode($atts){ 
 	ob_start();
@@ -369,6 +379,14 @@ function program_add_custom_box() {
 			'roma_trial_campaign_colors_custom_box_html',
 			'campaign_day'
 		);
+
+		add_meta_box(
+			'artist_details',
+			'Artist Details',
+			'roma_trial_artist_custom_box_html',
+			'Artist'
+		);
+
 		
     }
 
@@ -388,6 +406,10 @@ function roma_trial_campaign_colors_custom_box_html( $post ) {
 
 function roma_trial_event_custom_box_html( $post ) {
 	include plugin_dir_path( __FILE__ ) . './metaforms/event_meta_form.php';
+}
+
+function roma_trial_artist_custom_box_html( $post ) {
+	include plugin_dir_path( __FILE__ ) . './metaforms/artist_meta_form.php';
 }
 
 function program_save_postdata( $post_id ) {
@@ -437,11 +459,20 @@ function program_save_postdata( $post_id ) {
 		'event_date_end',
 		'event_date_timezone',
 		'event_place',
-		'event_livestream_url'
+		'event_livestream_url',
+
+		'artist_instagram_url',
+		'artist_youtube_url',
+		'artist_twitter_url',
+		'artist_facebook_url',
+		'artist_website_url',
+		'artist_title'
+
 
     ];
     foreach ( $fields as $field ) {
-        if ( array_key_exists( $field, $_POST ) ) {
+        if ( array_key_exists( $field, $_POST )) {
+
             update_post_meta( $post_id, $field, sanitize_text_field( $_POST[$field] ) );
         }
      }

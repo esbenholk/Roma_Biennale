@@ -1110,10 +1110,18 @@ li{
 	margin-bottom: 50px;
 }
 .back-arrow{
-	margin-top: 10px;
+	padding: 0 !important;
+	margin-top: 30px;
+	max-width: 29px;
+	min-width: 29px;
+	object-fit: contain;
+	margin-bottom: 50px;
+}
+.go-arrow{
 	max-width: 29px;
 	object-fit: contain;
-	padding-bottom: 50px;
+	transform: rotate(180deg);
+	margin: 0 !important;
 }
 
 
@@ -1129,6 +1137,18 @@ li{
 	font-weight: normal;
 	font-size: 48px;
 	line-height: 100%;
+	margin-right: 5px;
+}
+.blog-item .blog-headline .headline-title{
+	color: #48AEE3;
+}
+
+.blog-item .entry-content .read-more{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 36px;
+	line-height: 108.8%;
 }
 
 .blog-item .blog-headline p{
@@ -1138,13 +1158,7 @@ li{
 	font-size: 12px;
 	line-height: 13px;
 }
-.blog-item .entry-content .read-more{
-	font-family: Karrik;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 36px;
-	line-height: 108.8%;
-}
+
 .blog-item .entry-content p{
 	font-family: Wremena;
 	font-style: normal;
@@ -1520,15 +1534,27 @@ figure{
 	margin-top: 40px;
 	margin-left: 400px;
 }
+.artist-names-headline{
+	margin-bottom: 20px;
+}
 .artist-name{
 	font-family: 'Karrik';
 	font-style: normal;
 	font-weight: normal;
-	font-size: 64px;
-	line-height: 70px;
+	font-size: 30px;
+	line-height: 34px;
 	color: var(--black) !important;
+	word-break: normal;
+	max-width: 100%;
 
 }
+.artist-name:last-child{
+	margin-bottom: 50px;
+}
+.artist-name u{
+	color: #48AEE3;
+	text-decoration: none;
+}	
 
 .single-artist h1{
 	max-width: 80%;
@@ -1725,6 +1751,21 @@ figure{
 	background-color: red !important;
 }
 
+.gm-style .gm-style-iw-c {
+    position: absolute;
+    box-sizing: border-box;
+	width: auto;
+    top: 0;
+    left: 0;
+    transform: translate(-50%,-100%);
+	padding: 20px !important;
+
+    background-color: white;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 7px 1px rgb(0 0 0 / 30%);
+}
+
 /* Slider Style
 --------------------------------------------- */
 
@@ -1869,6 +1910,25 @@ figure{
 		margin-right: 15px;
 	}
 
+	.appear-on-phone{
+		display: block;
+		padding-left: 10px;
+		padding-top: 15px;
+	}
+
+	.back-arrow{
+		max-width: 29px;
+		object-fit: contain;
+		margin-bottom: 0px;
+		margin-left: 30px;
+	}
+	.go-arrow{
+		max-width: 25px;
+		object-fit: contain;
+		transform: rotate(180deg);
+		margin: 0 !important;
+	}
+
 	/* .frontpage-slider{
 		max-height: 100vh !important;	
 	}
@@ -1882,13 +1942,45 @@ figure{
 }
 @media screen and (max-width: 40em) {
 
+	.back-arrow{
+		max-width: 29px;
+		object-fit: contain;
+		margin-bottom: 0px;
+		margin-left: 10px;
+	}
+	.go-arrow{
+		max-width: 25px;
+		object-fit: contain;
+		transform: rotate(180deg);
+		margin: 0 !important;
+	}
+
 	.blogs-container {
 		padding-top: 0px !important;
+	}
+	.blogs-container .top{
+		padding-top: 25px !important;
 	}
 	.blog-item .blog-headline,
 	.blog-item img,
 	.blog-item .entry-content > *{
 		margin-bottom: 25px;
+	}
+
+
+	.blog-item .blog-headline h2{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 36px;
+		line-height: 100%;
+	}
+	.blog-item .entry-content .read-more{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		line-height: 108.8%;
 	}
 
 	.wp-block-columns:first-child{
@@ -1904,13 +1996,7 @@ figure{
 		font-size: 12px;
 		line-height: 13px;
 	}
-	.blog-item .entry-content .read-more{
-		font-family: Karrik;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 36px;
-		line-height: 108.8%;
-	}
+
 	.blog-item .entry-content p{
 		font-family: Wremena;
 		font-style: normal;
@@ -1919,16 +2005,8 @@ figure{
 		line-height: 109%;
 	}
 
-	.back-arrow{
-		max-width: 29px;
-		object-fit: contain;
-		padding-bottom: 0px;
-	}
-	.appear-on-phone{
-		display: block;
-		padding-left: 10px;
-		padding-top: 15px;
-	}
+
+
 	.tag-name:first-of-type{
 		margin-top: 50px;
 	}
