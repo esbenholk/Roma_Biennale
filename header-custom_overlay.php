@@ -49,60 +49,71 @@
 
 			</div>
 
-		<?php } ?>
-	<header id="masthead" class="site-header flex-row">
-		<div id="loader"></div>
+	<?php } ?>
 
+	<header id="masthead" class="site-header flex-row">
+		
 		<a id="header_headline"class="large-headline" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 		 		<?php bloginfo( 'name' ); ?>
 		</a> 
 
-			<button id="expander" class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
-			</button>
-				
+		<button id="expander" class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
+		</button>
 
 
 		<nav id="site-navigation" class="main-navigation hidden">
-			<div>
-			<a id="header_headline"class="large-headline nav-headline" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<?php bloginfo( 'name' ); ?>
-			</a> 
+				<div>
 			
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-					'menu_class' => 'list-container foldout-menu'
-				)
-			);
-			?>
-			</div>
 
-			<div class="site-footer flex-row navigation-footer">
-		
-					<div class="newsletter-signup">
-						<?php if ( is_active_sidebar( 'newsletter_signup' ) ) : ?>
-							<?php dynamic_sidebar( 'newsletter_signup' ); ?>
-						<?php endif; ?>
-					</div>
-					
-						
+					<div id="masthead" class="site-header flex-row">
+							<a id="header_headline"class="large-headline" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+									<?php bloginfo( 'name' ); ?>
+							</a> 
+					</div><!-- #masthead -->
+				
 					<?php
-							wp_nav_menu(
-								array(
-									'theme_location' => 'menu-2',
-									'menu_id'        => 'social-media-icons',
-									'menu_class' => 'social-media-icons flex-row'
-								)
-							);
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu',
+							'menu_class' => 'list-container foldout-menu'
+						)
+					);
 					?>
+				</div>
+
+				<div class="site-footer flex-row navigation-footer">
 			
-			</div>
+						<div class="newsletter-signup">
+							<?php if ( is_active_sidebar( 'newsletter_signup' ) ) : ?>
+								<?php dynamic_sidebar( 'newsletter_signup' ); ?>
+							<?php endif; ?>
+						</div>
+						
+							
+						<?php
+								wp_nav_menu(
+									array(
+										'theme_location' => 'menu-2',
+										'menu_id'        => 'social-media-icons',
+										'menu_class' => 'social-media-icons flex-row'
+									)
+								);
+						?>
+				
+				</div>
 		</nav><!-- #site-navigation -->
+
+				
+
 
 	
 	</header><!-- #masthead -->
+
+
+
+
+
 
 
 

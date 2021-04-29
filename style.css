@@ -182,6 +182,7 @@ p{
 	font-weight: normal;
 	font-size: 32px;
 	line-height: 45px;
+	min-height: 20px;
 }
 .underlined{
 	text-decoration: underline;
@@ -637,10 +638,12 @@ textarea {
 --------------------------------------------------------------*/
 
 #expander {
+	position: fixed;
+	right: 20px;
 	background-color: transparent;
 	height: 19px;
 	width: 36px;
-	z-index: 99999999;
+	z-index: 999999999999;
 	border: none;
 	cursor: pointer;
 	display: flex;
@@ -735,10 +738,6 @@ textarea {
 #masthead {
 	position: relative;
 	z-index: 99;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	white-space: nowrap;
 	background-color: var(--main_color);
 	padding: var(--container-Padding);
 	height: var(--blockHeight);
@@ -768,25 +767,22 @@ textarea {
 
 .main-navigation{
 	position: fixed;
-	width: 100%;
-	height: 100%;
 	transform: translate(100%,0);
 	transition: .2s ease-in;
-	z-index: 9;
+	z-index: 99;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
 	background-color: var(--main_color);
 	padding:0;
-	padding-top: 20px;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right:0;
 }
 .nav-headline{
-	padding: var(--container-Padding);
+	margin: var(--container-Padding);
 }
 .active{
 	z-index: 99999;
@@ -891,6 +887,7 @@ textarea {
 
 #page {
 	position: fixed;
+	z-index: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
@@ -917,8 +914,6 @@ textarea {
 }
 .entry-content img{
 	object-fit: contain;
-	width: 100%;
-	height: auto;
 
 }
 
@@ -1026,12 +1021,17 @@ textarea {
 
 	#masthead{
 		height: var(--blockHeightMobile);
-		padding: 20px 14px 20px 20px;
+		padding: var(--container-Padding-mobile)
 	}
 
 	.nav-headline{
-		padding: 20px 14px 20px 20px;
+		margin: 20px 14px 20px 20px;
 	}
+	#expander{
+		right: 14px;
+	}
+
+
 	.site-footer{
 		max-width: 100%;
 		padding: 20px 30px 20px 20px;
