@@ -514,6 +514,7 @@ p{
 	line-height: 36px;
 	height: auto;
 	overflow-y: hidden;
+	min-height: 26px
 }
 
 
@@ -605,9 +606,7 @@ object {
 	max-width: 100%;
 }
 
-img {
-	width: 100%;
-}
+
 
 a:-webkit-any-link,
 a{
@@ -1794,6 +1793,9 @@ figure{
 	height: 100%;
 	justify-content: flex-start !important;
 }
+.slide-content{
+	background-repeat: repeat;
+}
 .slide-content .wp-block-columns .wp-block-column figure,
 .slide-content .wp-block-columns .wp-block-column figure img{
 	width: 100%;
@@ -2429,6 +2431,12 @@ figure{
 /* Do not show the outline on the skip link target. */
 #primary[tabindex="-1"]:focus {
 	outline: 0;
+}
+
+
+.no-padding{
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 /* Alignments
