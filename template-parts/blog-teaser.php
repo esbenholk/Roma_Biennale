@@ -35,6 +35,8 @@
 
     $year = get_the_date('Y');
     $thumbnail_extra = catch_image();  
+
+    $location=get_post_meta($post->ID, 'post_location_place', false);
 ?>  
 
 <article class="blog-item" id="post-<?php $year ?>" <?php post_class(); ?>>
@@ -51,6 +53,10 @@
         ?>
 
         <p><?php echo $posted_on_string?> <?php the_date('')?> <?php echo $by_string?> <?php the_author()?></p>
+
+        <?php if($location[0]){?>
+            <p><?php echo $location[0]?></p>
+        <?php } ?>
     </div>
     
 

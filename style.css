@@ -1122,6 +1122,7 @@ li{
 	object-fit: contain;
 	transform: rotate(180deg);
 	margin: 0 !important;
+	margin-right: 15px !important;
 }
 
 
@@ -1681,6 +1682,22 @@ figure{
 	background-color: white;
 }
 
+.horizontal-flag{
+	position: relative;
+	background-color: #43A05A;
+	display: flex;
+	padding: 0;
+}
+.stripe{
+	position: relative;
+	top: 0;
+	bottom: 0;
+	left:0;
+	width: calc(35% + 2.65em);
+	height: var(--standard-container-height);
+	background-color: #48AEE3;
+
+}
 
 /* Widgets
 --------------------------------------------- */
@@ -1927,6 +1944,7 @@ figure{
 		object-fit: contain;
 		transform: rotate(180deg);
 		margin: 0 !important;
+		margin-right: 15px !important;
 	}
 
 	/* .frontpage-slider{
@@ -1953,6 +1971,7 @@ figure{
 		object-fit: contain;
 		transform: rotate(180deg);
 		margin: 0 !important;
+		margin-right: 15px !important;
 	}
 
 	.blogs-container {
@@ -2079,8 +2098,17 @@ figure{
 
 
 	.turn-thin{
-		min-height: 25px;
-		max-height: 25px;
+		min-height: 20px;
+		max-height: 20px;
+	}
+	.stripe{
+
+		height: 20px;
+	
+	}
+	.horizontal-flag{
+
+		padding: 0;
 	}
 	.event-container{
 		padding: 10px 10px 10px 10px;

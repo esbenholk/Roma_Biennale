@@ -63,9 +63,11 @@
 	if (strpos($url, "de") !== false) {
 		$headline = "Künstler/-innen";
 		$artist_list_headline = "Künstler/-innen AZ";
+		$link = "https://roma-biennale.com/de/artists/";
 		} else {
 		$headline = "Artists";
 		$artist_list_headline = "Artists AZ";
+		$link = "https://roma-biennale.com/artists/";
 	}
 ?>
 
@@ -75,7 +77,7 @@
 		<div class="wp-block-columns flex-change-to-column-reverse blogs-container">
 				<div class="wp-block-column" style="flex-basis:35%">
 					<div class="artist-names flex-column flex-start">
-						<p class="artist-name artist-names-headline"> <?php echo $artist_list_headline?></p>
+						<p class="artist-name artist-names-headline"><a href="<?php echo $link?>"><?php echo $artist_list_headline?></a></p>
 						<?php while( $the_query_with_title->have_posts() ) : $the_query_with_title->the_post(); ?>
 							<?php $artist_title=get_post_meta($post->ID, 'artist_title', false); ?>
 

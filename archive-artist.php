@@ -76,8 +76,10 @@
             <h1 class="fixed-headline"><?php echo $headline ?></h1>
         </div>
 
-        <div class="standard-container blue lowz turn-thin"></div>
-        <div class="standard-container green lowz turn-thin"></div>
+        <div class="standard-container horizontal-flag turn-thin">
+                <div class="stripe"></div>
+        </div>
+
 
 
         <div class="wp-block-columns flex-change-to-column blogs-container">

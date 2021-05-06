@@ -22,6 +22,8 @@
 
 
 		<p>Adding a title to the Artist, ei: "curator, founder or similar" moves the Artist to the top of the list<br></p>
+		<p>Make sure only to put in full URLs ei: copy from address bar with "https/..."<br></p>
+
 
 
 </div>

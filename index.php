@@ -58,12 +58,15 @@ $html_tags .= '</div>';
 				<?php
 			endif;?>
 
-			<div class="standard-container blue lowz turn-thin"></div>
-			<div class="standard-container green lowz turn-thin"></div>
+			<div class="standard-container horizontal-flag turn-thin">
+				<div class="stripe"></div>
+			</div>
+
+
 
 
 			<div class="wp-block-columns flex-change-to-column blogs-container">
-				<div class="wp-block-column" style="flex-basis:35%">
+				<div class="wp-block-column top" style="flex-basis:35%">
 
 
 					<?php echo $html_tags; ?>

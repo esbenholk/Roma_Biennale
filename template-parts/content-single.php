@@ -17,8 +17,9 @@
         </div>
 
 		
-        <div class="standard-container blue lowz turn-thin"></div>
-        <div class="standard-container green lowz turn-thin"></div>
+        <div class="standard-container horizontal-flag turn-thin">
+                <div class="stripe"></div>
+        </div>
 
 		<div class="singe-entry-content">
 			<?php

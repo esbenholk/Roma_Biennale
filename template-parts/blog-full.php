@@ -35,6 +35,9 @@
 
     $year = get_the_date('Y');
 
+    $location=get_post_meta($post->ID, 'post_location_place', false);
+
+
    
 ?>  
 
@@ -52,6 +55,9 @@
         ?>
 
         <p><?php echo $posted_on_string?> <?php the_date('')?> <?php echo $by_string?> <?php the_author()?></p>
+        <?php if($location[0]){?>
+            <p><?php echo $location[0]?></p>
+        <?php } ?>
     </div>
     
 

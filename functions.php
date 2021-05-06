@@ -386,6 +386,12 @@ function program_add_custom_box() {
 			'roma_trial_artist_custom_box_html',
 			'Artist'
 		);
+		add_meta_box(
+			'post_location_place',
+			'Location',
+			'roma_trial_post_custom_box_html',
+			'post'
+		);
 
 		
     }
@@ -410,6 +416,10 @@ function roma_trial_event_custom_box_html( $post ) {
 
 function roma_trial_artist_custom_box_html( $post ) {
 	include plugin_dir_path( __FILE__ ) . './metaforms/artist_meta_form.php';
+}
+
+function roma_trial_post_custom_box_html( $post ) {
+	include plugin_dir_path( __FILE__ ) . './metaforms/post_meta_form.php';
 }
 
 function program_save_postdata( $post_id ) {
@@ -466,7 +476,9 @@ function program_save_postdata( $post_id ) {
 		'artist_twitter_url',
 		'artist_facebook_url',
 		'artist_website_url',
-		'artist_title'
+		'artist_title',
+
+		'post_location_place'
 
 
     ];
