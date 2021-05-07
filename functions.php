@@ -151,21 +151,38 @@ add_action( 'widgets_init', 'roma_biennale_widgets_init' );
  * Enqueue scripts and styles.
  */
 function roma_biennale_scripts() {
+
+	//custom stylesheets
 	wp_enqueue_style( 'roma_biennale-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_enqueue_style( 'menu-animation-style', get_stylesheet_uri(),'/style-menu-animation.css', array(), 1.1, true );
-	
+
+
+
+	//flickity
+	// wp_register_style( 'flickity', '/style_flickity.css', array(), '1.4' );
+
+	//rtl ---> NB unvisited
 	wp_style_add_data( 'roma_biennale-style', 'rtl', 'replace' );
 
+	//custom scripts
 	wp_enqueue_script( 'roma_biennale-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'roma_biennale-menu-styling', get_template_directory_uri() . '/js/menu.js', array('jquery'), _S_VERSION, true );
 	wp_enqueue_script( 'roma_biennale-overlay', get_template_directory_uri() . '/js/overlay.js', array('jquery'), _S_VERSION, true );
 	wp_enqueue_script( 'roma_biennale-sm-sharing', get_template_directory_uri() . '/js/webapi.js', array('jquery'), _S_VERSION, true );
 
-
-
 }
 add_action( 'wp_enqueue_scripts', 'roma_biennale_scripts' );
 
+
+/**
+ * Proper way to enqueue scripts and styles.
+ */
+function flickity_scripts() {
+	wp_enqueue_style( 'flickity', get_stylesheet_uri(),'/style_flickity.css', array(), 1.1, true );
+
+    wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/flickity.js', array('jquery'), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'flickity_scripts' );
 
 
 
@@ -303,28 +320,7 @@ function tag_list_shortcode() {
 add_shortcode('important_days', 'tag_list_shortcode'); 
 
 
-function single_event_shortcode($atts){ 
-	ob_start();
-	foreach($atts as $att){
 
-		$args = array(
-			'p'         => $att, // ID of a page, post, or custom type
-			'post_type' => 'event'
-		  );
-		$the_query = new WP_Query($args);
-
-		while( $the_query->have_posts() ) : $the_query->the_post();  
-                        
-		get_template_part( 'template-parts/event-thumbnail', 'page' );
-
-		endwhile; 
-		
-	
-	}
-    
-} 
-	// register shortcode
-add_shortcode('artists_event', 'single_event_shortcode'); 
 
 
 function graphic_page_divider_shortcode($atts) { 
@@ -344,6 +340,16 @@ function custom_gallery_shortcode() {
 } 
 	// register shortcode
 add_shortcode('gallery', 'custom_gallery_shortcode'); 
+
+
+// function that runs when shortcode is called
+function custom_slider_gallery_shortcode() { 
+	ob_start();
+	get_template_part( 'template-parts/slider_gallery');
+    return ob_get_clean(); 
+} 
+	// register shortcode
+add_shortcode('slider_gallery', 'custom_slider_gallery_shortcode'); 
 
 /**
  * meta boxes for Program Template

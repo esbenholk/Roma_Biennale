@@ -62,13 +62,13 @@
   
     <?php if ( get_the_post_thumbnail(get_the_ID()) != '' ) {
 
-        echo '<a href="'; the_permalink(); echo '" class="thumbnail-wrapper">';
-        the_post_thumbnail();
+        echo '<a class="teaser-img" href="'; the_permalink(); echo '" class="thumbnail-wrapper">';
+        the_post_thumbnail('post-thumbnail', ['class' => 'teaser-img', 'title' => 'Feature image']);
         echo '</a>';
 
         } else {
 
-        ?> <img src="<?php echo $thumbnail_extra;?>"/><?php
+        ?> <img class="teaser-img" src="<?php echo $thumbnail_extra;?>"/><?php
 
     }?>
 

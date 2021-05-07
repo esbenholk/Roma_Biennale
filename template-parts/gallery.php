@@ -29,8 +29,8 @@ if ( $custom_query->have_posts() ):
                                     
                 $full_img_url = wp_get_attachment_url($poster->ID);
                 $caption = wp_get_attachment_caption($poster->ID);
-
                 $title = get_the_title($poster->ID);
+
                 if (@getimagesize($full_img_url)) { ?> 
                 
                     <div class="poster">

@@ -54,7 +54,7 @@
 
         <p><?php echo $posted_on_string?> <?php the_date('')?> <?php echo $by_string?> <?php the_author()?></p>
 
-        <?php if($location[0]){?>
+        <?php if($location){?>
             <p><?php echo $location[0]?></p>
         <?php } ?>
     </div>
@@ -64,12 +64,12 @@
     <?php if ( get_the_post_thumbnail(get_the_ID()) != '' ) {
 
             echo '<a href="'; the_permalink(); echo '" class="thumbnail-wrapper">';
-            the_post_thumbnail();
+            the_post_thumbnail('post-thumbnail', ['class' => 'teaser-img', 'title' => 'Feature image']);
             echo '</a>';
 
             } else {
 
-            ?> <img src="<?php echo $thumbnail_extra;?>"/><?php
+            ?> <img class="teaser-img" src="<?php echo $thumbnail_extra;?>"/><?php
 
     }?>
 

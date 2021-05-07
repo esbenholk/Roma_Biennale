@@ -39,7 +39,6 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-    <a href="javascript:history.go(-1)"><img class="back-arrow hidden appear-on-phone" src="/wp-content/themes/Roma_Biennale/icons/left-arrow.svg"/></a>
 
 
     <div class="wp-block-columns flex-change-to-column-reverse blogs-container">
@@ -69,8 +68,11 @@
 					
 				
 				</div>
+
+                <a href="javascript:history.go(-1)"><img class="back-arrow hidden appear-on-phone" src="/wp-content/themes/Roma_Biennale/icons/left-arrow.svg"/></a>
+
 				
-			</div>
+    </div>
 
 
 
