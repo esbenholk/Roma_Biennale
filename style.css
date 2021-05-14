@@ -1738,7 +1738,7 @@ figure{
 .share-button{
 	margin-left: 30px;
 }
-.slider
+
 
 
 
@@ -1767,28 +1767,126 @@ figure{
 /* Map w/ MapPress
 --------------------------------------------- */
 
-.mapp-layout{
-	margin: 0;
+.map-container{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.map-container .wp-block-column:first-child{
+	padding: 30px 30px 30px 30px;
+}
+.map-container .wp-block-column:last-child{
+	margin: 0 !important;
+	flex-grow: 2;
+}
+.map-container .wp-block-column:last-child div{
+	margin: 0 !important;
+}
+.map-container .wp-block-column h2{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 36px;
+	line-height: 32px;
+}
+
+.map-container .wp-block-column p{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 20px;
 	
 }
-.mapp-list{
-	background-color: red !important;
+
+.icon figure{
+	margin-right: 20px !important;
+	min-width: 30px;
+}
+.icon-title{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 14px;
 }
 
-.gm-style .gm-style-iw-c {
-    position: absolute;
-    box-sizing: border-box;
+
+
+.map-container .wp-block-column:first-child figure,
+.map-container .wp-block-column:first-child div{
+	margin: 0;
 	width: auto;
-    top: 0;
-    left: 0;
-    transform: translate(-50%,-100%);
-	padding: 20px !important;
-
-    background-color: white;
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0 2px 7px 1px rgb(0 0 0 / 30%);
+	
 }
+
+.gm-style-iw{
+	width: auto !important;
+	max-width: 300px !important;
+	padding: 0 !important
+}
+.gm-style-iw .gm-style-iw-d{
+	padding: 20px !important;
+}
+.gm-style-iw .gm-style-iw-d h1{
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 14px;
+	width: auto;
+	max-width: 100%;
+	white-space: pre-wrap;
+}
+.gm-style-iw .gm-style-iw-d p{
+	width: static;
+	max-width: 100%;
+	white-space: pre-wrap;
+	margin-top: 10px;
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 14px;
+	min-height: 14px !important;
+}
+.google-redirect{
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/right-arrow.svg");
+	background-repeat: no-repeat;
+	background-position: right;
+	max-width: 130px;
+	background-size: 16px auto;
+	padding-right: 25px;  /* width of the image plus a little extra padding */
+	display: block;  /* may not need this, but I've found I do */
+}
+.Exhibition{
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/Exhibition_alt.svg");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 25px;  /* width of the image plus a little extra padding */
+	display: block;  /* may not need this, but I've found I do */
+	background-size: 16px auto;
+}
+.Partners{
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/Partners_alt.svg");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 25px;  /* width of the image plus a little extra padding */
+	display: block;  /* may not need this, but I've found I do */
+	background-size: 16px auto;
+}
+
+.Events{
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/Events_alt.svg");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 25px;  /* width of the image plus a little extra padding */
+	display: block;  /* may not need this, but I've found I do */
+	background-size: 16px auto;
+}
+
+
+
 
 /* Slider Style
 --------------------------------------------- */
@@ -1835,7 +1933,7 @@ figure{
 .carousel-container{
 	width: 100%;
 	overflow-x: hidden;
-	padding: 37px 30px 55px 30px;
+	padding: 37px 30px 37px 30px;
 	
 }
 
@@ -1866,21 +1964,24 @@ figure{
 	position: absolute;
 	bottom: 0;
 	right: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 }
 
 .carousel-cell-details div{
 	margin-top: 30px;
 }
 .carousel-detail{
-	font-family: Karrik;
+	font-family: Karrik !important;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 24px;
-	line-height: 24px;
+	font-size: 24px !important;
+	line-height: 24px !important;
 	text-align: right;
 }
 .download{
-	font-size: 18px;
+	font-size: 18px !important;
 	text-align: bottom;
 	min-height: 0;
 }
@@ -1890,20 +1991,21 @@ figure{
 	width: 100%;
 }
 
+
 .single-carousel-detail{
-	font-family: Karrik;
+	font-family: Karrik !important;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 18px;
-	line-height: 18px;
+	font-size: 18px !important;
+	line-height: 18px !important;
 	text-align: right;
 }
 .single-carousel-detail-b{
-	font-family: Karrik;
+	font-family: Karrik !important;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 24px;
-	line-height: 24px;
+	font-size: 24px !important;
+	line-height: 24px !important;
 	text-align: right;
 }
 
@@ -2096,6 +2198,41 @@ figure{
 	
 
 
+/* Button
+--------------------------------------------- */
+
+.black-button{
+	position: relative;
+	background-color: var(--black);
+	border-radius: 20px;
+	height: auto;	
+	display: inline-flex;
+	flex-direction: column;
+	margin: 0px 0px 0px 30px;
+	width: -webkit-max-content;
+	width: -moz-max-content;
+	width: max-content;
+	display: block;  /* may not need this, but I've found I do */
+}
+.black-button a{
+	display: inline-block;
+	padding: 15px;
+	background-image: url("/wp-content/themes/Roma_Biennale/icons/right-arrow.svg");
+	background-repeat: no-repeat;
+	background-position: 95% 50%;
+	background-size: 20px auto;
+	padding-right: 40px;  /* width of the image plus a little extra padding */
+	color: white !important;
+	font-family: Karrik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 70%;
+}
+
+
+
+
 /* Mobile
 --------------------------------------------- */
 
@@ -2184,7 +2321,7 @@ figure{
 
 
 	#footer-menu li {
-		width: 100%;
+	
 		display: flex;
 		justify-content: space-between;
 	}
@@ -2218,14 +2355,20 @@ figure{
 		margin-right: 15px !important;
 	}
 
-	/* .frontpage-slider{
-		max-height: 100vh !important;	
+	.map-container{
+		margin: 0 !important;
+		padding: 0 !important;
 	}
-	.slide-content .wp-block-columns .wp-block-column figure,
-	.slide-content .wp-block-columns .wp-block-column figure img{
-		max-height: 300px !important;
-	} */
-
+	
+	.map-container .wp-block-column:first-child{
+		padding: 30px 30px 30px 30px;
+	}
+	.map-container .wp-block-column:last-child{
+		margin: 0 !important;
+	}
+	.map-container .wp-block-column:last-child div{
+		margin: 0 !important;
+	}
 	.carousel-container{
 		padding: 37px 10px 37px 10px;
 	}
@@ -2235,6 +2378,7 @@ figure{
 		width: 100%;
 		bottom: 0;
 		right: 0;
+
 	}
 
 	.carousel-cell img{
@@ -2257,87 +2401,27 @@ figure{
 		width: 160px;
 		height: 222.5px;
 	}
-	
-	
 
-}
-
-
-
-@media screen and (max-width: 40em) {
-
-	.back-arrow{
-		max-width: 29px;
-		object-fit: contain;
-		margin-bottom: 0px;
-	}
-	.go-arrow{
-		max-width: 25px;
-		object-fit: contain;
-		transform: rotate(180deg);
+	.map-container .wp-block-column:first-child{
+		padding: 30px 30px 30px 30px;
 		margin: 0 !important;
-		margin-right: 15px !important;
+	}
+	.map-container .wp-block-column:last-child{
+		margin: 0 !important;
+	}
+	.map-container .wp-block-column:last-child div{
+		margin: 0 !important;
 	}
 
-	.blogs-container {
-		padding-top: 0px !important;
-	}
-	.blogs-container .top{
-		padding-top: 25px !important;
-	}
-	.blog-item .blog-headline,
-	.blog-item img,
-	.blog-item .entry-content > *{
-		margin-bottom: 25px;
+	.gm-style-iw .gm-style-iw-d{
+		max-width: 300px;
 	}
 
-
-	.blog-item .blog-headline h2{
-		font-family: Karrik;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 36px;
-		line-height: 100%;
-	}
-	.blog-item .entry-content .read-more{
-		font-family: Karrik;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		line-height: 108.8%;
-	}
-
-	.wp-block-columns:first-child{
-		margin-top: 0px;
-	}
-	.blogs-container.wp-block-column:first-child{
-		margin-top: 50px !important;
-	}
-	.blog-item .blog-headline p{
-		font-family: Karrik;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 12px;
-		line-height: 13px;
-	}
-
-	.blog-item .entry-content p{
-		font-family: Wremena;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 22px;
-		line-height: 109%;
-	}
-
-
-
-	.tag-name:first-of-type{
-		margin-top: 50px;
-	}
+	
 	
 
-
 }
+
 
 @media screen and (max-width: 40em) {
 
@@ -2364,7 +2448,11 @@ figure{
 	.wp-block-columns{
 		padding: 0px 10px 0px 10px;
 	}
-	
+	.black-button{
+		margin: 0px 10px 0px 10px;
+	}
+
+
 	.standard-container{
 		min-height: 60px;
 		padding: 0px 10px 0px 10px;
@@ -2656,10 +2744,101 @@ figure{
 
 	}
 
+	
+	.map-container .wp-block-column:first-child{
+		padding: 30px 10px 30px 10px;
+		margin: 0 !important;
+	
+	}
+	.map-container .wp-block-column:last-child{
+		margin: 0 !important;
+		background-color: var(--black);
+	}
+
+	.map-container .wp-block-column:last-child div:first-child{
+		margin: 0 !important;
+	}
+	.wpgmp_map_parent{
+		max-width: 95% !important;
+	}
 
 
+
+
+	.back-arrow{
+		max-width: 29px;
+		object-fit: contain;
+		margin-bottom: 0px;
+	}
+	.go-arrow{
+		max-width: 25px;
+		object-fit: contain;
+		transform: rotate(180deg);
+		margin: 0 !important;
+		margin-right: 15px !important;
+	}
+
+	.blogs-container {
+		padding-top: 0px !important;
+	}
+	.blogs-container .top{
+		padding-top: 25px !important;
+	}
+	.blog-item .blog-headline,
+	.blog-item img,
+	.blog-item .entry-content > *{
+		margin-bottom: 25px;
+	}
+
+
+	.blog-item .blog-headline h2{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 36px;
+		line-height: 100%;
+	}
+	.blog-item .entry-content .read-more{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		line-height: 108.8%;
+	}
+
+	.wp-block-columns:first-child{
+		margin-top: 0px;
+	}
+	.blogs-container.wp-block-column:first-child{
+		margin-top: 50px !important;
+	}
+	.blog-item .blog-headline p{
+		font-family: Karrik;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 13px;
+	}
+
+	.blog-item .entry-content p{
+		font-family: Wremena;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 22px;
+		line-height: 109%;
+	}
+
+
+
+	.tag-name:first-of-type{
+		margin-top: 50px;
+	}
 
 }
+
+
+
+
 @media screen and (max-width: 340px) {
 	.change-to-column-on-mini-phone{
 		flex-direction: column;
@@ -2669,6 +2848,9 @@ figure{
 	.share-button{
 		margin:0;
 	}
+
+
+}
 
 
 

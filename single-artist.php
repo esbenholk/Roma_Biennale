@@ -62,11 +62,11 @@
 	
 	if (strpos($url, "de") !== false) {
 		$headline = "Künstler/-innen";
-		$artist_list_headline = "Künstler/-innen AZ";
+		$artist_list_headline = "Künstler/-innen A-Z";
 		$link = "https://roma-biennale.com/de/artists/";
 		} else {
 		$headline = "Artists";
-		$artist_list_headline = "Artists AZ";
+		$artist_list_headline = "Artists A-Z";
 		$link = "https://roma-biennale.com/artists/";
 	}
 ?>

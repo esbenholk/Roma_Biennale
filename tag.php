@@ -31,7 +31,7 @@ function myComparison($a, $b){
 
 usort ( $tags, 'myComparison' );
 
-$html_tags = '<div class="post_tags flex-column disappear-on-phone"> <p>Check out other tags:</p>';
+$html_tags = '<div class="post_tags flex-column disappear-on-phone"> <p>Tags:</p>';
 foreach ( $tags as $tag ) {
     $tag_link = get_tag_link( $tag->term_id );
 

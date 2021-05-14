@@ -75,7 +75,7 @@
 		<div class="standard-container flex-row flex-between fullwidth"> <!-- header info in menu -->
 
 
-				<div class="flex-row flex-between">
+				<div class="flex-row flex-between fullwidth">
 
 					<a class="flex-row flex-start headertitle disappear-on-phone" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img class="logo" src="<?php echo $image[0];?>"/>
