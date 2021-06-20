@@ -1,6 +1,6 @@
 	<div style="display: flex-column; justify-content: space-between; background-color: <?php echo esc_attr( get_post_meta( get_the_ID(), 'category1_color', true ) ); ?>">
 			<div style="display: flex">
-				<div style="width:45%; display: flex-column; margin-left: 20px; margin-right: 20px;">
+			<div style="width:45%; display: flex-column; margin-left: 20px; margin-right: 20px;">
 					<label style="width:100%;" for="category1_date">DATE</label>
 					<input style="width:100%;" name="category1_date" id="category1_date" type="date" class="postbox"size="100%" value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'category1_date', true ) ); ?>"/>
 
@@ -24,6 +24,11 @@
 				<textarea name="category1_description" id="category1_description" rows="4" cols="50" size="100%" height="200" textalign="left">
 					<?php echo esc_attr( get_post_meta( get_the_ID(), 'category1_description', true ) ); ?>			
 				</textarea>
+			</div>
+
+			<div style="width:45%; display: flex-column; margin-left: 20px; margin-right: 20px;">
+				<label style="width:100%;"> Input number in hierarchy: number 1 goes to the top of all sites ei: program, frontpage and gallery</label>
+				<input type="number" id="category1_hierarchy" name="category1_hierarchy" min="1" max="5" value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'category1_hierarchy', true ) ); ?>">
 			</div>
 	</div>
 
@@ -54,6 +59,10 @@
 					<?php echo esc_attr( get_post_meta( get_the_ID(), 'category2_description', true ) ); ?>			
 				</textarea>
 			</div>
+			<div style="width:45%; display: flex-column; margin-left: 20px; margin-right: 20px;">
+				<label style="width:100%;"> Input number in hierarchy: number 1 goes to the top of all sites ei: program, frontpage and gallery</label>
+				<input type="number" id="category2_hierarchy" name="category2_hierarchy" min="1" max="5" value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'category2_hierarchy', true ) ); ?>">
+			</div>
 	</div>
 
 	<div style="display: flex-column; justify-content: space-between; background-color: <?php echo esc_attr( get_post_meta( get_the_ID(), 'category3_color', true ) ); ?>">
@@ -82,6 +91,11 @@
 				<textarea name="category3_description" id="category3_description" rows="4" cols="50" size="100%" height="200" textalign="left">
 					<?php echo esc_attr( get_post_meta( get_the_ID(), 'category3_description', true ) ); ?>			
 				</textarea>
+			</div>
+
+			<div style="width:45%; display: flex-column; margin-left: 20px; margin-right: 20px;">
+				<label style="width:100%;"> Input number in hierarchy: number 1 goes to the top of all sites ei: program, frontpage and gallery</label>
+				<input type="number" id="category3_hierarchy" name="category3_hierarchy" min="1" max="5" value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'category3_hierarchy', true ) ); ?>">
 			</div>
 	</div>
 
@@ -112,6 +126,11 @@
 					<?php echo esc_attr( get_post_meta( get_the_ID(), 'category4_description', true ) ); ?>			
 				</textarea>
 			</div>
+
+			<div style="width:45%; display: flex-column; margin-left: 20px; margin-right: 20px;">
+				<label style="width:100%;"> Input number in hierarchy: number 1 goes to the top of all sites ei: program, frontpage and gallery</label>
+				<input type="number" id="category4_hierarchy" name="category4_hierarchy" min="1" max="5" value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'category4_hierarchy', true ) ); ?>">
+			</div>
 	</div>
 
 	<div style="display: flex-column; justify-content: space-between; background-color: <?php echo esc_attr( get_post_meta( get_the_ID(), 'category5_color', true ) ); ?>">
@@ -140,5 +159,10 @@
 				<textarea name="category5_description" id="category5_description" rows="4" cols="50" size="100%" height="200" textalign="left">
 					<?php echo esc_attr( get_post_meta( get_the_ID(), 'category5_description', true ) ); ?>			
 				</textarea>
+			</div>
+
+			<div style="width:45%; display: flex-column; margin-left: 20px; margin-right: 20px;">
+				<label style="width:100%;"> Input number in hierarchy: number 1 goes to the top of all sites ei: program, frontpage and gallery</label>
+				<input type="number" id="category5_hierarchy" name="category5_hierarchy" min="1" max="5" value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'category5_hierarchy', true ) ); ?>">
 			</div>
 	</div>

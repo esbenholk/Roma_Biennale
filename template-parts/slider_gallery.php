@@ -92,10 +92,10 @@ usort($categories,function($first,$second){
 
                             if (strpos($url, "/de") !== false) {
                                 $continue_string = "Online-Ausstellung anzeigen";
-                                $continue_url = "https://roma-biennale.com/kampagne/";
+                                $continue_url = "https://roma-biennale.com/gallerei/";
                             } else {
                                 $continue_string = "View online exhibition";
-                                $continue_url = "https://roma-biennale.com/campaign";
+                                $continue_url = "https://roma-biennale.com/gallery";
                             }
 
                             $attachments = get_children(array('post_parent' => $post->ID,

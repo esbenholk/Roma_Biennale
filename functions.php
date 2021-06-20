@@ -484,7 +484,13 @@ function program_save_postdata( $post_id ) {
 		'artist_website_url',
 		'artist_title',
 
-		'post_location_place'
+		'post_location_place',
+		
+		'category2_hierarchy',
+		'category1_hierarchy',
+		'category3_hierarchy',
+		'category4_hierarchy',
+		'category5_hierarchy'
 
 
     ];
