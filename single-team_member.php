@@ -15,7 +15,7 @@
 	get_header();
 
 	$args = array (
-		'post_type' => 'post',
+		'post_type' => 'team_member',
 	); // gets Artists
 	$the_query = new WP_Query($args);
 
@@ -55,7 +55,6 @@
              
 
 				   <div class="post_tags flex-column"> 
-						<a  class="disappear-on-phone" href=<?php $link?> ><?php echo $other_news ?></a>
 						<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
 							<a class="artist-name" href=<?php the_permalink() ?>>
 								<?php the_title();  ?>

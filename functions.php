@@ -257,6 +257,49 @@ function event_register() {
 
 add_action( 'init', 'event_register' );
 
+
+function team_member_register() {
+
+	register_post_type( 'team_member',
+    // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'Team Member' ),
+                'singular_name' => __( 'teammember' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'team'),
+			'show_in_rest' => true,
+			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
+
+        )
+	);
+}
+
+add_action( 'init', 'team_member_register' );
+
+function video_register() {
+
+	register_post_type( 'Video',
+    // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'Video' ),
+                'singular_name' => __( 'video' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'videos'),
+			'show_in_rest' => true,
+			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
+
+        )
+	);
+}
+
+add_action( 'init', 'video_register' );
+
 add_action( 'pre_get_posts', function ( $query ) {
     if ( is_post_type_archive( 'event' ) && $query->is_main_query() ) {
         $query->set( 'orderby', 'meta_value' );
@@ -325,7 +368,6 @@ add_shortcode('important_days', 'tag_list_shortcode');
 
 function graphic_page_divider_shortcode($atts) { 
 	ob_start();
-	
 	return '<div class="small-standard-container turn-thin" style="background-color:'.$atts["color"]. '"></div>';
 
 } 

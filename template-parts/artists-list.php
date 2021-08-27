@@ -3,7 +3,7 @@
 				'post_type' => '>Artist',
 				'posts_per_page' => '-1',
 				); // gets Artists
-				$the_query = new WP_Query($args4);
+				$the_query = new WP_Query($args);
 			?>
 		
 			

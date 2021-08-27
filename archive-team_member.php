@@ -14,53 +14,44 @@
 
 get_header();
 
-$tags = get_tags(array(
-	'taxonomy' => 'post_tag',
-	'orderby' => 'name',
-	'hide_empty' => true
-  ));
 
-function myComparison($a, $b){
-    if(is_numeric($a) && !is_numeric($b))
-        return 1;
-    else if(!is_numeric($a) && is_numeric($b))
-        return -1;
-    else
-        return ($a < $b) ? -1 : 1;
-} 
 
-usort ( $tags, 'myComparison' );
 
-$html_tags = '<div class="post_tags flex-column"><p>Tags:</p>';
-foreach ( $tags as $tag ) {
-    $tag_link = get_tag_link( $tag->term_id );
-    $html_tags .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
-    $html_tags .= "{$tag->name}</a>";
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+$url = "https://";   
+else  
+$url = "http://";   
+// Append the host(domain name, ip) to the URL.   
+$url.= $_SERVER['HTTP_HOST'];   
+
+// Append the requested resource location to the URL   
+$url.= $_SERVER['REQUEST_URI'];    
+
+
+if (strpos($url, "de") !== false) {
+$headline = "Team";
+$artist_list_headline = "Members";
+} else {
+    $headline = "Team";
+    $artist_list_headline = "Members";
 }
-$html_tags .= '</div>';
-
-
-
-
 
 ?>
 
 	<main id="primary" class="site-main">
 
-		<?php
+    <?php
 		if ( have_posts() ) :
+		?>
+		<div class="standard-container flex-row">
+            <h1 class="fixed-headline"><?php echo $headline ?></h1>
+        </div>
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;?>
+        <div class="standard-container horizontal-flag turn-thin">
+                <div class="stripe"></div>
+        </div>
 
-			<div class="standard-container horizontal-flag turn-thin">
-				<div class="stripe"></div>
-			</div>
+
 
 
 
@@ -77,7 +68,7 @@ $html_tags .= '</div>';
 
 						endwhile; ?>
 						
-						<?php echo $html_tags; ?>
+			
 
 					</div>
 
@@ -94,7 +85,7 @@ $html_tags .= '</div>';
 					* If you want to override this in a child theme, then include a file
 					* called content-___.php (where ___ is the Post Type name) and that will be used instead.
 					*/
-					get_template_part( 'template-parts/blog-teaser', get_post_type() );
+					get_template_part( 'template-parts/team_member-teaser', get_post_type() );
 
 					endwhile; ?>
 					

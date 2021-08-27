@@ -18,6 +18,8 @@
 		'post_type' => 'Artist',
 		'orderby' => 'title',
 		'order'   => 'ASC',
+		'posts_per_page' => '-1',
+
 		'meta_query' => array(
 			array(
 				'relation' => 'OR',
@@ -39,6 +41,8 @@
         'post_type' => 'Artist',
         'orderby' => 'title',
         'order'   => 'ASC',
+		'posts_per_page' => '-1',
+
         'meta_query' => array(
             array(
                 'key' => 'artist_title',

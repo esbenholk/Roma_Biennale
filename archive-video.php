@@ -14,30 +14,6 @@
 
 get_header();
 
-$tags = get_tags(array(
-	'taxonomy' => 'post_tag',
-	'orderby' => 'name',
-	'hide_empty' => true
-  ));
-
-function myComparison($a, $b){
-    if(is_numeric($a) && !is_numeric($b))
-        return 1;
-    else if(!is_numeric($a) && is_numeric($b))
-        return -1;
-    else
-        return ($a < $b) ? -1 : 1;
-} 
-
-usort ( $tags, 'myComparison' );
-
-$html_tags = '<div class="post_tags flex-column"><p>Tags:</p>';
-foreach ( $tags as $tag ) {
-    $tag_link = get_tag_link( $tag->term_id );
-    $html_tags .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
-    $html_tags .= "{$tag->name}</a>";
-}
-$html_tags .= '</div>';
 
 
 
@@ -50,17 +26,15 @@ $html_tags .= '</div>';
 		<?php
 		if ( have_posts() ) :
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;?>
+		?>
+		        <div class="standard-container flex-row">
+            <h1 class="fixed-headline">Videos</h1>
+        </div>
 
-			<div class="standard-container horizontal-flag turn-thin">
-				<div class="stripe"></div>
-			</div>
+        <div class="standard-container horizontal-flag turn-thin">
+                <div class="stripe"></div>
+        </div>
+
 
 
 
@@ -77,7 +51,7 @@ $html_tags .= '</div>';
 
 						endwhile; ?>
 						
-						<?php echo $html_tags; ?>
+			
 
 					</div>
 
@@ -94,7 +68,7 @@ $html_tags .= '</div>';
 					* If you want to override this in a child theme, then include a file
 					* called content-___.php (where ___ is the Post Type name) and that will be used instead.
 					*/
-					get_template_part( 'template-parts/blog-teaser', get_post_type() );
+					get_template_part( 'template-parts/video-teaser', get_post_type() );
 
 					endwhile; ?>
 					

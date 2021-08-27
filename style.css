@@ -1109,9 +1109,17 @@ li{
 	line-height: 108.8%;
 
 }
-
-.post_tags p:first-child{
+.tag-name,
+.post_tags a{
+	margin-bottom: 10px !important;
+}
+.post_tags p:first-child,
+.post_tags a:first-child{
 	margin-bottom: 30px;
+	margin-top: 30px !important;
+}
+.post_tags a:first-child{
+	margin-top: 0px !important;
 }
 .post_tags a:last-child{
 	margin-bottom: 50px;
@@ -2769,6 +2777,9 @@ figure{
 		max-width: 29px;
 		object-fit: contain;
 		margin-bottom: 0px;
+	}
+	.top-arrow{
+		margin-left: 10px !important;
 	}
 	.go-arrow{
 		max-width: 25px;

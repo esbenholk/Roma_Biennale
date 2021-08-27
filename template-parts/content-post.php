@@ -8,6 +8,8 @@
  */
 
 
+
+
 ?>
 
 <?php  
@@ -26,10 +28,13 @@
         $posted_on_string = "Gepostet am";
         $by_string = "von";
         $continue_string = "Weiterlesen";
+        $other_news = "andere Neuigkeiten:";
     } else {
         $posted_on_string = "Posted on";
         $by_string = "by";
         $continue_string = "Read more";
+        $other_news = "other news:";
+
     }
 
     $year = get_the_date('Y');
@@ -46,11 +51,25 @@
 
                     <a href="javascript:history.go(-1)"><img class="back-arrow" src="/wp-content/themes/Roma_Biennale/icons/left-arrow.svg"/></a>
                    
-           
-                    <?php foreach( $post_tags as $post_tag ) {
-                        echo '<li><a href="' . get_tag_link( $post_tag ) . '">' . $post_tag->name . '</a></li>';
-                    }?>
+             
 
+                    <div class="post_tags flex-column"> 
+                            <p><?php echo $other_news ?></p>
+                            <?php $list_posts = get_posts( array( 'numberposts' => -1 ) );
+                            $list_titles = array();
+                            foreach( $list_posts as $post ) { $list_titles[] = $post->post_title; } ?>
+                            <?php foreach( $list_titles as $title ) {
+                                echo '<li><a href="' . get_tag_link( $title) . '">' . $title . '</a></li>';
+                            }?>
+
+
+
+                            <p>Tags:</p>
+                            <?php foreach( $post_tags as $post_tag ) {
+                                echo '<li><a href="' . get_tag_link( $post_tag ) . '">' . $post_tag->name . '</a></li>';
+                            }?>
+				
+				    </div>
 					
 				</div>
 				<div class="wp-block-column" style="flex-basis:60%">
