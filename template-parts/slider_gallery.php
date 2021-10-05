@@ -19,6 +19,8 @@ $category1->title=get_post_meta($post->ID, 'category1_title', false);
 $category1->date = get_post_meta($post->ID, 'category1_date', false);
 $category1->date_string = strtotime($category1->date[0]);
 $category1->key = get_post_meta($post->ID, 'category1_category_key', false);
+$category1->hierarchy = get_post_meta($post->ID, 'category1_hierarchy', false);
+
 
 
 $category2=new stdClass();
@@ -26,6 +28,8 @@ $category2->title=get_post_meta($post->ID, 'category2_title', false);
 $category2->date = get_post_meta($post->ID, 'category2_date', false);
 $category2->date_string = strtotime($category2->date[0]);
 $category2->key = get_post_meta($post->ID, 'category2_category_key', false);
+$category2->hierarchy = get_post_meta($post->ID, 'category2_hierarchy', false);
+
 
 
 $category3=new stdClass();
@@ -33,18 +37,24 @@ $category3->title=get_post_meta($post->ID, 'category3_title', false);
 $category3->date = get_post_meta($post->ID, 'category3_date', false);
 $category3->date_string = strtotime($category3->date[0]);
 $category3->key = get_post_meta($post->ID, 'category3_category_key', false);
+$category3->hierarchy = get_post_meta($post->ID, 'category3_hierarchy', false);
+
 
 $category4=new stdClass();
 $category4->title=get_post_meta($post->ID, 'category4_title', false);
 $category4->date = get_post_meta($post->ID, 'category4_date', false);
 $category4->date_string = strtotime($category4->date[0]);
 $category4->key = get_post_meta($post->ID, 'category4_category_key', false);
+$category4->hierarchy = get_post_meta($post->ID, 'category4_hierarchy', false);
+
 
 $category5=new stdClass();
 $category5->title=get_post_meta($post->ID, 'category5_title', false);
 $category5->date = get_post_meta($post->ID, 'category5_date', false);
 $category5->date_string = strtotime($category5->date[0]);
 $category5->key = get_post_meta($post->ID, 'category5_category_key', false);
+$category5->hierarchy = get_post_meta($post->ID, 'category5_hierarchy', false);
+
 
 
 
@@ -52,8 +62,12 @@ array_push($categories, $category1, $category2, $category3, $category4, $categor
 
 endwhile; 
 
+// usort($categories,function($first,$second){
+//     return $first->date_string > $second->date_string;
+// });
+
 usort($categories,function($first,$second){
-    return $first->date_string > $second->date_string;
+    return $first->hierarchy > $second->hierarchy;
 });
 ?>
 

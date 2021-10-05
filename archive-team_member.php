@@ -56,17 +56,19 @@ $artist_list_headline = "Members";
 
 
 
-			<div class="wp-block-columns flex-change-to-column blogs-container">
+		<div class="wp-block-columns flex-change-to-column blogs-container">
 				<div class="wp-block-column top" style="flex-basis:35%">
 
 					<div class="post_tags flex-column"> 
 						<?php while ( have_posts() ) :
 						the_post();
 
-						?> <a> <?php echo the_title(); ?> </a><?php
+						?>  <a class="artist-name" href=<?php the_permalink() ?>>
+								<?php the_title();  ?> </a><?php
 
 
 						endwhile; ?>
+
 						
 			
 

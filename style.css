@@ -1140,11 +1140,19 @@ li{
 	margin-right: 15px !important;
 }
 
+.blog-item .blog-headline p{
+	display: none; !important
+font-family: Karrik;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 13px;
+}
 
 .blog-item .blog-headline,
 .blog-item img,
 .blog-item .entry-content > *{
-	margin-bottom: 50px;
+	margin-bottom: 25px;
 }
 
 .blog-item .blog-headline h2{
@@ -1167,13 +1175,6 @@ li{
 	line-height: 108.8%;
 }
 
-.blog-item .blog-headline p{
-	font-family: Karrik;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px;
-	line-height: 13px;
-}
 
 .blog-item .entry-content p{
 	font-family: Wremena;
@@ -2224,7 +2225,7 @@ figure{
 }
 .black-button a{
 	display: inline-block;
-	padding: 15px;
+	padding: 5px;
 	background-image: url("/wp-content/themes/Roma_Biennale/icons/right-arrow.svg");
 	background-repeat: no-repeat;
 	background-position: 95% 50%;
